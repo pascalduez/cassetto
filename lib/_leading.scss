@@ -9,7 +9,7 @@ $fontsize-base: 10 !default;
   //
   // Helper mixin to print computed leading values.
   //
-  $computed-font-size: $font-size * $fontsize_base;
+  $computed-font-size: $font-size * $fontsize-base;
   $computed-line-height: $computed-font-size * $line-height;
   $leading: $computed-line-height - $computed-font-size;
   $half-leading: $leading / 2;
@@ -27,7 +27,7 @@ $fontsize-base: 10 !default;
   //
   // Helper mixin set maring around text blocks.
   //
-  $computed-font-size: $font-size * $fontsize_base;
+  $computed-font-size: $font-size * $fontsize-base;
   $computed-line-height: $computed-font-size * $line-height;
   $leading: $computed-line-height - $computed-font-size;
   $half-leading: $leading / 2;
