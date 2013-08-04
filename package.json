@@ -1,0 +1,13 @@
+{
+  "name": "cassetto",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "~0.2.20130718",
+    "matchdep": "~0.1.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

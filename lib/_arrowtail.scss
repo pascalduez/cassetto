@@ -1,0 +1,53 @@
+
+//
+// Cassetto arrow tail.
+//
+@mixin arrowtail( $width, $height, $direction, $bg-color ) {
+  //
+  // Add a triangle tail element.
+  //
+  $half-width: $width / 2;
+  $half-height: $height / 2;
+
+  position: relative;
+  &:after {
+    width: $width;
+    height: $height;
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background: $bg-color;
+
+    @if $direction == "top" {
+      top: -$half-height;
+      left: calc(50% - #{$half-width});
+    }
+    @if $direction == "right" {
+      top: calc(50% - #{$half-height});
+      right: -$half-width;
+    }
+    @if $direction == "bottom" {
+      bottom: -$half-height;
+      left: calc(50% - #{$half-width});
+    }
+    @if $direction == "left" {
+      top: calc(50% - #{$half-height});
+      left: -$half-width;
+    }
+  }
+}
+
+
+@mixin arrowtail-shadow( $color ) {
+  //
+  // @todo
+  // diagonaly split the bg in two parts.
+  //
+  &:after {
+    background: linear-gradient(
+        230deg,
+        $color 0%, $color 50%,
+        rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%
+      );
+  }
+}

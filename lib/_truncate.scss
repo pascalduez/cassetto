@@ -1,0 +1,17 @@
+
+//
+// Cassetto truncate.
+//
+@mixin truncate {
+  //
+  // Hide text overflow and add and ellipsis.
+  //
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%truncate {
+  @include truncate;
+}

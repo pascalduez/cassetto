@@ -1,0 +1,20 @@
+
+//
+// Cassetto hyphenate.
+//
+
+$hyphens-support: -moz, -webkit, not -o, -ms, not -khtml;
+
+@mixin hyphenate {
+  //
+  // Triggers hyphenation and apply all-round settings.
+  //
+  @include experimental(hyphens, auto, $hyphens-support...);
+  @include experimental(hyphenate-limit-lines, 2, $hyphens-support...);
+  @include experimental(hyphenate-limit-chars, 6 3 2, $hyphens-support...);
+  @include experimental(hyphenate-character, "\2010", $hyphens-support...);
+}
+
+%hyphenate {
+  @include hyphenate;
+}

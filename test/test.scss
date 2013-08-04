@@ -1,0 +1,90 @@
+
+//
+// Import cassetto
+//
+@import "../lib/cassetto";
+
+/*
+ * Test arrowtail.
+ */
+.test-arrowtail {
+  .top {
+    @include arrowtail( 25px, 25px, "top", rgba(0, 0 ,0, .5) );
+  }
+  .right {
+    @include arrowtail( 25px, 25px, "right", rgba(0, 0 ,0, .5) );
+  }
+  .bottom {
+    @include arrowtail( 25px, 25px, "bottom", rgba(0, 0 ,0, .5) );
+  }
+  .left {
+    @include arrowtail( 25px, 25px, "left", rgba(0, 0 ,0, .5) );
+  }
+}
+
+/*
+ * Test bevel.
+ */
+.test-bevel {
+  .top {
+    box-shadow: bevel( "top", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+  }
+  .right {
+    box-shadow: bevel( "right", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+  }
+  .bottom {
+    box-shadow: bevel( "bottom", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+  }
+  .left {
+    box-shadow: bevel( "left", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+  }
+}
+
+/*
+ * Test dropshadow.
+ */
+.test-dropshadow {
+  @include dropshadow;
+}
+
+/*
+ * Test hyphenate.
+ */
+.test-hyphenate {
+  @include hyphenate;
+}
+
+/*
+ * Test leading.
+ */
+.test-leading {
+  @include leading( 1.6, 1.5 );
+}
+
+/*
+ * Test truncate.
+ */
+.test-truncate {
+  @include truncate;
+}
+
+/*
+ * Test whitespace.
+ */
+.test-whitespace {
+  @include reset-whitespace( a );
+}
+
+/*
+ * Test typography.
+ */
+.test-typography {
+  h1, h2, h3, h4, h5, h6 {
+    @include typography-heading;
+  }
+  p {
+    @include typography-paragraph;
+  }
+}
+
+

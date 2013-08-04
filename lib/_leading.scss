@@ -1,0 +1,38 @@
+
+//
+// Cassetto leading.
+//
+
+$fontsize-base: 10 !default;
+
+@mixin leading( $font-size, $line-height ) {
+  //
+  // Helper mixin to print computed leading values.
+  //
+  $computed-font-size: $font-size * $fontsize_base;
+  $computed-line-height: $computed-font-size * $line-height;
+  $leading: $computed-line-height - $computed-font-size;
+  $half-leading: $leading / 2;
+  /*
+    $computed-font-size: #{$computed-font-size}px
+    computed-line-height: #{$computed-line-height}px
+    leading: #{$leading}px
+    half-leading: #{$half-leading}px
+  */
+  @debug "half-leading: #{$half-leading}px";
+}
+
+
+@function set-margin( $font-size, $line-height, $margin ) {
+  //
+  // Helper mixin set maring around text blocks.
+  //
+  $computed-font-size: $font-size * $fontsize_base;
+  $computed-line-height: $computed-font-size * $line-height;
+  $leading: $computed-line-height - $computed-font-size;
+  $half-leading: $leading / 2;
+
+  @return round($margin - $half-leading);
+}
+
+

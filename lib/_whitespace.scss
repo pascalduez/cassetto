@@ -1,0 +1,21 @@
+
+//
+// Cassetto reset whitespace.
+//
+@mixin reset-whitespace( $childs ) {
+  //
+  // Remove white space between inline/inline-block elements.
+  //
+  font-size: 0.1rem;
+  letter-spacing: -1em;
+  word-spacing: -1em;
+
+  #{$childs} {
+    @include rem(font-size, 1.6rem);
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+  }
+}

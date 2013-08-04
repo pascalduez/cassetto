@@ -1,0 +1,39 @@
+
+//
+// Cassetto bevel.
+//
+@function bevel( $direction, $color-dark, $color-light ) {
+  //
+  // Create a bevel effect with 2 adjacent 1px lines.
+  //
+  $ret: "";
+
+  $params: (
+    (inset 0 1px 0 0 $color-dark, inset 0 2px 0 0 $color-light), // top
+    (inset -1px 0 0 0 $color-light, inset -2px 0 0 $color-dark), // right
+    (inset 0 -1px 0 0 $color-light, inset 0 -2px 0 0 $color-dark), // bottom
+    (inset 1px 0 0 0 $color-dark, inset 2px 0 0 0 $color-light), // left
+    (inset 0 -1px 0 0 $color-dark, inset 0 -2px 0 0 $color-light) // bottom inverted
+  );
+
+  @if $direction == "top" {
+    $ret: nth($params, 1);
+  }
+  @if $direction == "right" {
+    $ret: nth($params, 2);
+  }
+  @if $direction == "bottom" {
+    $ret: nth($params, 3);
+  }
+  @if $direction == "left" {
+    $ret: nth($params, 4);
+  }
+  @if $direction == "top bottom" {
+    $ret: nth($params, 1), nth($params, 3);
+  }
+  @if $direction == "bottom inverted" {
+    $ret: nth($params, 5);
+  }
+
+  @return $ret;
+}
