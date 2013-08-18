@@ -8,7 +8,7 @@
   // (!= box-shadow)
   //
   -webkit-filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
-  filter: url(../img/dropshadow.svg#dropshadow);
+  filter: url(svg/dropshadow.svg#dropshadow);
   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
 }
