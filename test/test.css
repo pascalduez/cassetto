@@ -81,28 +81,6 @@
 }
 
 /*
- * Test hyphenate.
- */
-.test-hyphenate {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -o-hyphens: auto;
-  hyphens: auto;
-  -webkit-hyphenate-limit-lines: 2;
-  -moz-hyphenate-limit-lines: 2;
-  -o-hyphenate-limit-lines: 2;
-  hyphenate-limit-lines: 2;
-  -webkit-hyphenate-limit-chars: 6 3 2;
-  -moz-hyphenate-limit-chars: 6 3 2;
-  -o-hyphenate-limit-chars: 6 3 2;
-  hyphenate-limit-chars: 6 3 2;
-  -webkit-hyphenate-character: "\2010";
-  -moz-hyphenate-character: "\2010";
-  -o-hyphenate-character: "\2010";
-  hyphenate-character: "\2010";
-}
-
-/*
  * Test leading.
  */
 .test-leading {
@@ -143,6 +121,38 @@
 }
 
 /*
+ * Test hyphenate.
+ */
+.test-hyphenate {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-limit-lines: 2;
+  -moz-hyphenate-limit-lines: 2;
+  -o-hyphenate-limit-lines: 2;
+  hyphenate-limit-lines: 2;
+  -webkit-hyphenate-limit-chars: 6 3 2;
+  -moz-hyphenate-limit-chars: 6 3 2;
+  -o-hyphenate-limit-chars: 6 3 2;
+  hyphenate-limit-chars: 6 3 2;
+  -webkit-hyphenate-character: "\2010";
+  -moz-hyphenate-character: "\2010";
+  -o-hyphenate-character: "\2010";
+  hyphenate-character: "\2010";
+}
+
+/*
+ * Test ligatures.
+ */
+.test-ligatures {
+  -moz-font-feature-settings: "liga=1", "dlig=1";
+  -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig";
+}
+
+/*
  * Test typography.
  */
 .test-typography h1, .test-typography h2, .test-typography h3, .test-typography h4, .test-typography h5, .test-typography h6 {
@@ -162,6 +172,7 @@
   -moz-hyphenate-character: "\2010";
   -o-hyphenate-character: "\2010";
   hyphenate-character: "\2010";
+  -moz-font-feature-settings: "liga=1", "dlig=1";
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
@@ -179,6 +190,10 @@
   -moz-hyphenate-limit-chars: 6 3 2;
   -o-hyphenate-limit-chars: 6 3 2;
   hyphenate-limit-chars: 6 3 2;
+  -webkit-hyphenate-character: "\2010";
+  -moz-hyphenate-character: "\2010";
+  -o-hyphenate-character: "\2010";
+  hyphenate-character: "\2010";
   -webkit-hyphenate-limit-zone: 10%;
   -moz-hyphenate-limit-zone: 10%;
   -o-hyphenate-limit-zone: 10%;
@@ -187,10 +202,7 @@
   -moz-hyphenate-limit-last: always;
   -o-hyphenate-limit-last: always;
   hyphenate-limit-last: always;
-  -webkit-hyphenate-character: "\2010";
-  -moz-hyphenate-character: "\2010";
-  -o-hyphenate-character: "\2010";
-  hyphenate-character: "\2010";
+  -moz-font-feature-settings: "liga=1", "dlig=1";
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";

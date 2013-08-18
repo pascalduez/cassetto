@@ -48,13 +48,6 @@
 }
 
 /*
- * Test hyphenate.
- */
-.test-hyphenate {
-  @include hyphenate;
-}
-
-/*
  * Test leading.
  */
 .test-leading {
@@ -73,6 +66,20 @@
  */
 .test-whitespace {
   @include reset-whitespace( a );
+}
+
+/*
+ * Test hyphenate.
+ */
+.test-hyphenate {
+  @include hyphenate;
+}
+
+/*
+ * Test ligatures.
+ */
+.test-ligatures {
+  @include ligatures;
 }
 
 /*

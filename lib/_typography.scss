@@ -8,35 +8,64 @@
 // Work in progress...
 //
 
-$hyphens-support: -moz, -webkit, not -o, -ms, not -khtml;
-$font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml;
+
+$hyphens-support: -moz, -webkit, not -o, -ms, not -khtml, official;
+$font-feature-old-syntax: -moz, not -webkit, not -o, not -ms, not -khtml, not official;
+$font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
+
+
+//
+// Cassetto hyphenate.
+//
+@mixin hyphenate {
+  //
+  // Triggers hyphenation and apply all-round settings.
+  //
+  @include experimental(hyphens, auto, $hyphens-support...);
+  @include experimental(hyphenate-limit-lines, 2, $hyphens-support...);
+  @include experimental(hyphenate-limit-chars, 6 3 2, $hyphens-support...);
+  @include experimental(hyphenate-character, "\2010", $hyphens-support...);
+}
+
+%hyphenate {
+  @include hyphenate;
+}
+
+
+//
+// Casetto ligatures.
+//
+@mixin ligatures {
+  //
+  // Enable basic ligatures on fonts that support it.
+  //
+  @include experimental(font-feature-settings, #{"liga=1", "dlig=1"}, $font-feature-old-syntax...);
+  @include experimental(font-feature-settings, #{"liga", "dlig"}, $font-feature-support...);
+}
+
+%ligatures {
+  @include ligatures;
+}
+
 
 @mixin typography-heading {
   //
   // Triggers hyphenation and apply all-round settings.
   // Activate default ligatures.
   //
-  @include experimental(hyphens, auto, $hyphens-support...);
-  @include experimental(hyphenate-limit-lines, 2, $hyphens-support...);
-  @include experimental(hyphenate-limit-chars, 6 3 2, $hyphens-support...);
-  @include experimental(hyphenate-character, "\2010", $hyphens-support...);
-  @include experimental(font-feature-settings, #{"liga", "dlig"}, $font-feature-support...);
+  @include ligatures;
 }
+
 
 @mixin typography-paragraph {
   //
   // Triggers hyphenation and apply all-round settings for paragraphs.
   // Activate default ligatures.
   //
-  @include experimental(hyphens, auto, $hyphens-support...);
-  @include experimental(hyphenate-limit-lines, 2, $hyphens-support...);
-  @include experimental(hyphenate-limit-chars, 6 3 2, $hyphens-support...);
+  @include hyphenate;
   @include experimental(hyphenate-limit-zone, 10%, $hyphens-support...);
   @include experimental(hyphenate-limit-last, always, $hyphens-support...);
-  @include experimental(hyphenate-character, "\2010", $hyphens-support...);
-  @include experimental(font-feature-settings, #{"liga", "dlig"}, $font-feature-support...);
-
-  // font-variant-ligatures: common-ligatures;
+  @include ligatures;
 
   @include rem(margin, 0 0 1.5rem);
 }
