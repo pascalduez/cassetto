@@ -9,11 +9,14 @@
   $ret: "";
 
   $params: (
-    (inset 0 1px 0 0 $color-dark, inset 0 2px 0 0 $color-light), // top
-    (inset -1px 0 0 0 $color-light, inset -2px 0 0 $color-dark), // right
+    (inset 0 1px 0 0 $color-dark, inset 0 2px 0 0 $color-light),   // top
+    (inset -1px 0 0 0 $color-light, inset -2px 0 0 $color-dark),   // right
     (inset 0 -1px 0 0 $color-light, inset 0 -2px 0 0 $color-dark), // bottom
-    (inset 1px 0 0 0 $color-dark, inset 2px 0 0 0 $color-light), // left
-    (inset 0 -1px 0 0 $color-dark, inset 0 -2px 0 0 $color-light) // bottom inverted
+    (inset 1px 0 0 0 $color-dark, inset 2px 0 0 0 $color-light),   // left
+    (inset 0 1px 0 0 $color-light, inset 0 2px 0 0 $color-dark),   // top inverted
+    (inset -1px 0 0 0 $color-dark, inset -2px 0 0 $color-light),   // right inverted
+    (inset 0 -1px 0 0 $color-dark, inset 0 -2px 0 0 $color-light), // bottom inverted
+    (inset 1px 0 0 0 $color-light, inset 2px 0 0 0 $color-dark)    // left inverted
   );
 
   @if $direction == "top" {
@@ -31,8 +34,20 @@
   @if $direction == "top bottom" {
     $ret: nth($params, 1), nth($params, 3);
   }
-  @if $direction == "bottom inverted" {
+  @if $direction == "left right" {
+    $ret: nth($params, 4), nth($params, 2);
+  }
+  @if $direction == "top inverted" {
     $ret: nth($params, 5);
+  }
+  @if $direction == "right inverted" {
+    $ret: nth($params, 6);
+  }
+  @if $direction == "bottom inverted" {
+    $ret: nth($params, 7);
+  }
+  @if $direction == "left inverted" {
+    $ret: nth($params, 8);
   }
 
   @return $ret;
