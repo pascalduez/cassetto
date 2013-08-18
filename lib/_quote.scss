@@ -1,0 +1,103 @@
+
+//
+// Cassetto quotes.
+//
+
+//
+// @todo
+// Work in progress...
+//
+// @see: http://html5doctor.com/blockquote-q-cite/
+//
+
+
+// Four levels of nested quotes
+q {
+  quotes: '“' '”' '‘' '’' '“' '”' '‘' '’';
+}
+
+// Two levels of nested quotes
+q {
+  quotes: '“' '”' '‘' '’';
+}
+
+// Extra content definitions for pre-2011 WebKit
+q:before {
+  content: '“';
+  content: open-quote;
+}
+q:after {
+  content: '”';
+  content: close-quote;
+}
+q q:before {
+  content: '‘';
+  content: open-quote;
+}
+q q:after {
+  content: '’';
+  content: close-quote;
+}
+
+// q in blockquote
+blockquote {
+  q:before {
+    content: '‘';
+    content: open-quote;
+  }
+  q:after {
+    content: '’';
+    content: close-quote;
+  }
+  q q:before {
+    content: '“';
+    content: open-quote;
+  }
+  q q:after {
+    content: '”';
+    content: close-quote;
+  }
+}
+
+// Blockquote hanging opening quote
+blockquote:before {
+  font: italic 400%/1 Cochin, Georgia, "Times New Roman", serif;
+  color: #999;
+  height: 0;
+  content: "“";
+  display: block;
+  margin-left: -.95em;
+}
+
+// Alternative blockquote style
+blockquote {
+  quotes: '“' '”';
+  p:before {
+    content: '“';
+    content: open-quote;
+  }
+  p:after {
+    content: '';
+    content: no-close-quote;
+  }
+  p:last-child:after {
+    content: '”';
+    content: close-quote;
+  }
+}
+
+// Quotes for French, German (two kinds) and Japanese
+:lang(fr) > q {
+  quotes: '« ' ' »' '“' '”';
+}
+:lang(de) > q {
+  quotes: '„' '“' '‚' '‘';
+}
+:lang(de) > q {
+  quotes: '»' '«' '›' '‹';
+}
+:lang(ja) > q {
+  quotes: '「' '」' '『' '』';
+}
+
+
