@@ -2,10 +2,13 @@
 //
 // Cassetto arrow tail.
 //
-@mixin arrowtail( $width, $height, $direction, $bg-color ) {
+@mixin arrowtail( $direction, $bg-color, $width, $height: false ) {
   //
   // Add a triangle tail element.
   //
+  @if not $height {
+    $height: $width;
+  }
   $half-width: $width / 2;
   $half-height: $height / 2;
 
