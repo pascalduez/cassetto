@@ -2,14 +2,14 @@
 //
 // Cassetto blur filter.
 //
-@mixin blur {
+@mixin blur( $radius: 5 ) {
   //
   // Can be applied to svg elements.
   //
-  -webkit-filter: blur(5px);
+  -webkit-filter: blur(#{$radius}px);
   filter: url(svg/blur.svg#blur);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='5')";
-  filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='5')";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$radius}')";
+  filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$radius}')";
 }
 
 %blur {
