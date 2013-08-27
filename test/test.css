@@ -115,13 +115,15 @@
   word-spacing: -1em;
 }
 .test-whitespace a {
+  display: inline-block;
   font-size: 26px;
   font-size: 1.6rem;
   letter-spacing: normal;
   word-spacing: normal;
-  display: inline-block;
+}
+.test-whitespace a {
   *display: inline;
-  *zoom: 1;
+  zoom: 1;
 }
 
 /*
