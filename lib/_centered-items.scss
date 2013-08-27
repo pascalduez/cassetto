@@ -1,0 +1,28 @@
+
+//
+// Cassetto centered items.
+//
+@mixin centered-items( $childs ) {
+  //
+  // Center items and adjust spacing/whitepsace for
+  // inline/inline-block elements.
+  //
+  text-align: justify;
+  width: 100%;
+
+  // Sort of clearfix for text-align: justify
+  &:after {
+    width: 100%;
+    display: inline-block;
+    content: "";
+  }
+
+  #{$childs} {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+// %centered-items {
+  // @include centered-items;
+// }

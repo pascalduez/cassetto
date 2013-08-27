@@ -127,6 +127,23 @@
 }
 
 /*
+ * Test centered items.
+ */
+.test-centered-items {
+  text-align: justify;
+  width: 100%;
+}
+.test-centered-items:after {
+  width: 100%;
+  display: inline-block;
+  content: "";
+}
+.test-centered-items li {
+  width: auto;
+  display: inline-block;
+}
+
+/*
  * Test hyphenate.
  */
 .test-hyphenate {

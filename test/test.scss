@@ -65,7 +65,14 @@
  * Test whitespace.
  */
 .test-whitespace {
-  @include reset-whitespace( a );
+  @include reset-whitespace("a");
+}
+
+/*
+ * Test centered items.
+ */
+.test-centered-items {
+  @include centered-items("li");
 }
 
 /*
