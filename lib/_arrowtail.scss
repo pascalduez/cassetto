@@ -2,15 +2,29 @@
 //
 // Cassetto arrow tail.
 //
-@mixin arrowtail( $direction, $bg-color, $width, $height: false ) {
+@mixin arrowtail( $direction, $bg-color, $diagonal: false, $width: false, $height: false ) {
   //
   // Add a triangle tail element.
   //
-  @if not $height {
-    $height: $width;
+  $half-width: "";
+  $half-height: "";
+
+  @if ($diagonal) {
+    $side: round($diagonal / sqrt(2));
+    $width: $side;
+    $height: $side;
+    $half-width: round($side / 2);
+    $half-height: round($side / 2);
   }
-  $half-width: $width / 2;
-  $half-height: $height / 2;
+  @else if ($width and not $height) {
+    $height: $width;
+    $half-width: round($width / 2);
+    $half-height: round($height / 2);
+  }
+  @else if ($width and $height) {
+    $half-width: round($width / 2);
+    $half-height: round($height / 2);
+  }
 
   position: relative;
   &:after {
@@ -37,20 +51,13 @@
       top: calc(50% - #{$half-height});
       left: -$half-width;
     }
-  }
-}
 
-
-@mixin arrowtail-shadow( $color ) {
-  //
-  // @todo
-  // diagonaly split the bg in two parts.
-  //
-  &:after {
     background: linear-gradient(
-        230deg,
-        $color 0%, $color 50%,
-        rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%
-      );
+      -45deg,
+      $bg-color 0%, $bg-color 50%,
+      rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%
+    );
   }
 }
+
+
