@@ -9,16 +9,16 @@
  */
 .test-arrowtail {
   .top {
-    @include arrowtail( "top", rgba(0, 0 ,0, .5), 25px );
+    @include arrowtail( "top", rgba(0, 0 ,0, .5), $diagonal: 30px );
   }
   .right {
-    @include arrowtail( "right", rgba(0, 0 ,0, .5), 25px );
+    @include arrowtail( "right", rgba(0, 0 ,0, .5), $diagonal: 30px );
   }
   .bottom {
-    @include arrowtail( "bottom", rgba(0, 0 ,0, .5), 25px );
+    @include arrowtail( "bottom", rgba(0, 0 ,0, .5), $diagonal: 30px );
   }
   .left {
-    @include arrowtail( "left", rgba(0, 0 ,0, .5), 25px );
+    @include arrowtail( "left", rgba(0, 0 ,0, .5), $diagonal: 30px );
   }
 }
 

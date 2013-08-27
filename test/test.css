@@ -5,53 +5,57 @@
   position: relative;
 }
 .test-arrowtail .top:after {
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   content: "";
   position: absolute;
   transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
-  top: -12.5px;
-  left: calc(50% - 12.5px);
+  top: -11px;
+  left: calc(50% - 11px);
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .right {
   position: relative;
 }
 .test-arrowtail .right:after {
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   content: "";
   position: absolute;
   transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
-  top: calc(50% - 12.5px);
-  right: -12.5px;
+  top: calc(50% - 11px);
+  right: -11px;
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .bottom {
   position: relative;
 }
 .test-arrowtail .bottom:after {
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   content: "";
   position: absolute;
   transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
-  bottom: -12.5px;
-  left: calc(50% - 12.5px);
+  bottom: -11px;
+  left: calc(50% - 11px);
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .left {
   position: relative;
 }
 .test-arrowtail .left:after {
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   content: "";
   position: absolute;
   transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
-  top: calc(50% - 12.5px);
-  left: -12.5px;
+  top: calc(50% - 11px);
+  left: -11px;
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 /*
@@ -75,7 +79,7 @@
  */
 .test-dropshadow {
   -webkit-filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
-  filter: url(../img/dropshadow.svg#dropshadow);
+  filter: url(svg/dropshadow.svg#dropshadow);
   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
 }
@@ -156,22 +160,6 @@
  * Test typography.
  */
 .test-typography h1, .test-typography h2, .test-typography h3, .test-typography h4, .test-typography h5, .test-typography h6 {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -o-hyphens: auto;
-  hyphens: auto;
-  -webkit-hyphenate-limit-lines: 2;
-  -moz-hyphenate-limit-lines: 2;
-  -o-hyphenate-limit-lines: 2;
-  hyphenate-limit-lines: 2;
-  -webkit-hyphenate-limit-chars: 6 3 2;
-  -moz-hyphenate-limit-chars: 6 3 2;
-  -o-hyphenate-limit-chars: 6 3 2;
-  hyphenate-limit-chars: 6 3 2;
-  -webkit-hyphenate-character: "\2010";
-  -moz-hyphenate-character: "\2010";
-  -o-hyphenate-character: "\2010";
-  hyphenate-character: "\2010";
   -moz-font-feature-settings: "liga=1", "dlig=1";
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga", "dlig";
