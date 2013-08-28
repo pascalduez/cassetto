@@ -1,6 +1,7 @@
 
 //
 // Cassetto arrow tail.
+// @see: http://codepen.io/pascalduez/pen/EBtmd
 //
 @mixin arrowtail( $direction, $bg-color, $diagonal: false, $width: false, $height: false ) {
   //
@@ -32,28 +33,31 @@
     height: $height;
     content: "";
     position: absolute;
-    transform: rotate(45deg);
     background: $bg-color;
 
-    @if $direction == "top" {
+    @if ($direction == "top") {
       top: -$half-height;
       left: calc(50% - #{$half-width});
+      transform: rotate(135deg);
     }
-    @if $direction == "right" {
+    @if ($direction == "right") {
       top: calc(50% - #{$half-height});
       right: -$half-width;
+      transform: rotate(-135deg);
     }
-    @if $direction == "bottom" {
+    @if ($direction == "bottom") {
       bottom: -$half-height;
       left: calc(50% - #{$half-width});
+      transform: rotate(-45deg);
     }
-    @if $direction == "left" {
+    @if ($direction == "left") {
       top: calc(50% - #{$half-height});
       left: -$half-width;
+      transform: rotate(45deg);
     }
 
     background: linear-gradient(
-      -45deg,
+      45deg,
       $bg-color 0%, $bg-color 50%,
       rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%
     );

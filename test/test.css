@@ -9,11 +9,11 @@
   height: 21px;
   content: "";
   position: absolute;
-  transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
   top: -11px;
   left: calc(50% - 11px);
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotate(135deg);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .right {
   position: relative;
@@ -23,11 +23,11 @@
   height: 21px;
   content: "";
   position: absolute;
-  transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
   top: calc(50% - 11px);
   right: -11px;
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotate(-135deg);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .bottom {
   position: relative;
@@ -37,11 +37,11 @@
   height: 21px;
   content: "";
   position: absolute;
-  transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
   bottom: -11px;
   left: calc(50% - 11px);
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotate(-45deg);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .test-arrowtail .left {
   position: relative;
@@ -51,11 +51,11 @@
   height: 21px;
   content: "";
   position: absolute;
-  transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.5);
   top: calc(50% - 11px);
   left: -11px;
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  transform: rotate(45deg);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 /*
