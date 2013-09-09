@@ -14,17 +14,17 @@
     $side: round($diagonal / sqrt(2));
     $width: $side;
     $height: $side;
-    $half-width: round($side / 2);
-    $half-height: round($side / 2);
+    $half-width: floor($side / 2);
+    $half-height: floor($side / 2);
   }
   @else if ($width and not $height) {
     $height: $width;
-    $half-width: round($width / 2);
-    $half-height: round($height / 2);
+    $half-width: floor($width / 2);
+    $half-height: floor($height / 2);
   }
   @else if ($width and $height) {
-    $half-width: round($width / 2);
-    $half-height: round($height / 2);
+    $half-width: floor($width / 2);
+    $half-height: floor($height / 2);
   }
 
   position: relative;
@@ -38,22 +38,22 @@
     @if ($direction == "top") {
       top: -$half-height;
       left: calc(50% - #{$half-width});
-      transform: rotate(135deg);
+      @include rotate(135deg);
     }
     @if ($direction == "right") {
       top: calc(50% - #{$half-height});
       right: -$half-width;
-      transform: rotate(-135deg);
+      @include rotate(-135deg);
     }
     @if ($direction == "bottom") {
       bottom: -$half-height;
       left: calc(50% - #{$half-width});
-      transform: rotate(-45deg);
+      @include rotate(-45deg);
     }
     @if ($direction == "left") {
       top: calc(50% - #{$half-height});
       left: -$half-width;
-      transform: rotate(45deg);
+      @include rotate(45deg);
     }
 
     background: linear-gradient(
