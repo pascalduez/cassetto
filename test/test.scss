@@ -101,4 +101,9 @@
   }
 }
 
-
+/*
+ * Test calc.
+ */
+.test-calc {
+  @include calc(width, "100% - 50px", 100px);
+}

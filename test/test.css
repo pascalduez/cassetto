@@ -232,3 +232,15 @@
   margin: 0 0 24px;
   margin: 0 0 1.5rem;
 }
+
+/*
+ * Test calc.
+ */
+.test-calc {
+  width: -webkit-calc(100% - 50px);
+  width: -moz-calc(100% - 50px);
+  width: calc(100% - 50px);
+}
+.nocsscalc .test-calc {
+  width: 100px;
+}

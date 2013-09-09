@@ -1,0 +1,18 @@
+
+
+//
+// Cassetto calc.
+// @wait for https://github.com/chriseppstein/compass/issues/1315
+//
+$calc-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
+
+@mixin calc( $property, $expression, $fallback: false ) {
+
+  @include experimental-value($property, calc(#{$expression}), $calc-support...);
+
+  @if ($fallback) {
+    .nocsscalc & {
+     #{$property}: $fallback;
+    }
+  }
+}
