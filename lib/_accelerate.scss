@@ -1,0 +1,14 @@
+
+//
+// Cassetto accelerate.
+//
+@mixin accelerate {
+  //
+  // Trigger hardware acceleration.
+  // Mostly usefull for webkit, iOs
+  //
+  @include experimental(transform, translate3d(0, 0, 0));
+  @include experimental(transform, preserve-3d);
+  @include experimental(backface-visibility, hidden);
+  @include experimental(perspective, 1000);
+}

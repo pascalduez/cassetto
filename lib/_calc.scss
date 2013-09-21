@@ -12,7 +12,7 @@ $calc-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
 
   @if ($fallback) {
     .nocsscalc & {
-     #{$property}: $fallback;
+      #{$property}: $fallback;
     }
   }
 }

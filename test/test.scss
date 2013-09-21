@@ -107,3 +107,10 @@
 .test-calc {
   @include calc(width, "100% - 50px", 100px);
 }
+
+/*
+ * Test accelerate.
+ */
+.test-accelerate {
+  @include accelerate;
+}
