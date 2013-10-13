@@ -1,0 +1,24 @@
+
+//
+// Import cassetto/filter
+//
+@import "../lib/filter/filter";
+//
+// Import test global
+//
+@import "test";
+
+
+/*
+ * Test blur.
+ */
+.test-blur {
+  @include blur(8);
+}
+
+/*
+ * Test dropshadow.
+ */
+.test-dropshadow {
+  @include dropshadow($offset-x: 3px, $offset-y: 3px, $blur-radius: 4px, $color: rgba(0, 0, 0, .5));
+}

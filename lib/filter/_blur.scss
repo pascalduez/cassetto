@@ -4,10 +4,10 @@
 //
 @mixin blur( $radius: 5 ) {
   //
-  // Can be applied to svg elements.
+  // Can be applied to html or svg elements.
   //
   -webkit-filter: blur(#{$radius}px);
-  filter: url(svg/blur.svg#blur);
+  filter: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="#{$radius}"/></filter></svg>#blur');
   -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$radius}')";
   filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$radius}')";
 }
@@ -15,3 +15,6 @@
 %blur {
   @include blur;
 }
+
+
+
