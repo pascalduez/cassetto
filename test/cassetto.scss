@@ -114,3 +114,12 @@
 .test-accelerate {
   @include accelerate;
 }
+
+/*
+ * Test generated.
+ */
+.test-generated {
+  &:before {
+    @include generated(50px, 50px);
+  }
+}

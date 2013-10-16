@@ -1,0 +1,18 @@
+
+//
+// Cassetto generated content.
+//
+@mixin generated($width: "", $height: "") {
+  //
+  //  Boilerplate styles for generated content .before :after
+  //
+  width: $width;
+  height: $height;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+}

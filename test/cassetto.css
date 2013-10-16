@@ -270,3 +270,16 @@
   -o-perspective: 1000;
   perspective: 1000;
 }
+
+/*
+ * Test generated.
+ */
+.test-generated:before {
+  width: 50px;
+  height: 50px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
