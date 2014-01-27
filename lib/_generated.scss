@@ -2,17 +2,16 @@
 //
 // Cassetto generated content.
 //
-@mixin generated($width: "", $height: "") {
+@mixin generated($width: false, $height: false, $top: false, $left: false) {
   //
   //  Boilerplate styles for generated content .before :after
   //
-  width: $width;
-  height: $height;
+  @if ($width) { width: $width };
+  @if ($height) { height: $height };
   content: "";
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: if($top, $top, 0);
+  left: if($left, $left, 0);
   z-index: 1;
-
 }
