@@ -2,7 +2,7 @@
 //
 // Cassetto generated content.
 //
-@mixin generated($width: false, $height: false, $top: false, $left: false) {
+@mixin generated($width: false, $height: false, $top: false, $right: false, $bottom: false, $left: false) {
   //
   //  Boilerplate styles for generated content .before :after
   //
@@ -11,7 +11,11 @@
   content: "";
   display: block;
   position: absolute;
-  top: if($top, $top, 0);
-  left: if($left, $left, 0);
+  @if($top) { top: $top; }
+  @if($right) { right: $right; }
+  @if($bottom) { bottom: $bottom; }
+  @if($left) { left: $left; }
   z-index: 1;
+
+  @content;
 }

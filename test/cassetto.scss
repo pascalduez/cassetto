@@ -122,4 +122,7 @@
   &:before {
     @include generated(50px, 50px);
   }
+  &:after {
+    @include generated(20px, 20px, $top: 0, $left: 0);
+  }
 }
