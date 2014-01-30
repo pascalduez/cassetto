@@ -20,8 +20,9 @@
 @mixin will-change($prop) {
   //
   // Some kind of dummy helper to keep track of progress on "will-change".
-  // http://tabatkins.github.io/specs/css-will-change/
+  // http://tabatkins.github.io/specs/css-will-change
   // https://bugzilla.mozilla.org/show_bug.cgi?id=940842
+  // https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/M62y2nKZ-gE
   //
   $allowed: ("auto", "scroll-position", "contents", "transform", "opacity", "scroll-position, transform", "transform, opacity", "contents, transform");
 
