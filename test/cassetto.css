@@ -272,6 +272,13 @@
 }
 
 /*
+ * Test will-change.
+ */
+.test-will-change .should-pass {
+  will-change: 4;
+}
+
+/*
  * Test generated.
  */
 .test-generated:before {

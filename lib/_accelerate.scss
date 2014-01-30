@@ -12,3 +12,24 @@
   @include experimental(backface-visibility, hidden);
   @include experimental(perspective, 1000);
 }
+
+
+//
+// Cassetto will-change.
+//
+@mixin will-change($prop) {
+  //
+  // Some kind of dummy helper to keep track of progress on "will-change".
+  // http://tabatkins.github.io/specs/css-will-change/
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=940842
+  //
+  $allowed: ("auto", "scroll-position", "contents", "transform", "opacity", "scroll-position, transform", "transform, opacity", "contents, transform");
+
+  @if (index($allowed, $prop) == false) {
+    @warn "Invalide value for will-change.";
+  }
+  @else {
+    will-change: index($allowed, $prop);
+  }
+
+}

@@ -116,6 +116,18 @@
 }
 
 /*
+ * Test will-change.
+ */
+.test-will-change {
+  .should-pass {
+    @include will-change(transform);
+  }
+  .should-fail {
+    @include will-change(height);
+  }
+}
+
+/*
  * Test generated.
  */
 .test-generated {
