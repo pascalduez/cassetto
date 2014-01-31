@@ -102,6 +102,18 @@
 }
 
 /*
+ * Test font smoothing.
+ */
+.test-font-smoothing {
+  .on {
+    @include font-smoothing;
+  }
+  .off {
+    @include font-smoothing(off);
+  }
+}
+
+/*
  * Test calc.
  */
 .test-calc {

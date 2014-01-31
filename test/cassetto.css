@@ -234,6 +234,18 @@
 }
 
 /*
+ * Test font smoothing.
+ */
+.test-font-smoothing .on {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.test-font-smoothing .off {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
  * Test calc.
  */
 .test-calc {

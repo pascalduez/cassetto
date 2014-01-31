@@ -69,3 +69,16 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
 
   @include rem(margin, 0 0 1.5rem);
 }
+
+
+//
+// Cassetto font smoothing.
+//
+@mixin font-smoothing($state: on) {
+  //
+  // on: default, subpixel rendering.
+  // off: disabled, fullpixel rendering.
+  //
+  -moz-osx-font-smoothing: if($state == on, auto, grayscale);
+  -webkit-font-smoothing:  if($state == on, subpixel-antialiased, antialiased);
+}
