@@ -287,7 +287,10 @@
  * Test will-change.
  */
 .test-will-change .should-pass {
-  will-change: 4;
+  will-change: transform;
+}
+.test-will-change .should-warn {
+  will-change: height;
 }
 
 /*

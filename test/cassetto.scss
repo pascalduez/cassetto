@@ -134,7 +134,7 @@
   .should-pass {
     @include will-change(transform);
   }
-  .should-fail {
+  .should-warn {
     @include will-change(height);
   }
 }
