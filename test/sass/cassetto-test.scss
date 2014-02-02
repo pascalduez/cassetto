@@ -2,7 +2,7 @@
 //
 // Import cassetto
 //
-@import "../lib/cassetto";
+@import "cassetto";
 
 /*
  * Test arrowtail.
@@ -38,13 +38,6 @@
   .left {
     box-shadow: bevel( "left", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
   }
-}
-
-/*
- * Test dropshadow.
- */
-.test-dropshadow {
-  @include dropshadow;
 }
 
 /*
@@ -149,4 +142,31 @@
   &:after {
     @include generated(20px, 20px, $top: 0, $left: 0);
   }
+}
+
+/*
+ * Test icons.
+ */
+.test-icons {
+
+  @include cst-sprite-map-create(social);
+
+  $social: ("facebook", "twitter", "googleplus", "xing", "linkedin");
+
+  @each $icon in $social {
+
+    .icon-svg-#{$icon} {
+      @include cst-icon(social, $icon);
+    }
+
+    .icon-png-#{$icon} {
+      @include cst-icon(social, $icon, $type: "png");
+    }
+
+    .icon-generated-#{$icon} {
+      @include cst-icon-generated(social, $icon);
+    }
+
+  }
+
 }

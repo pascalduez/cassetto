@@ -2,11 +2,29 @@
 //
 // Import cassetto/filter
 //
-@import "../lib/filter/filter";
+@import "filter/filter";
+
+
 //
-// Import test global
+// Global test styles.
 //
-@import "test";
+
+body {
+  background: lightGrey;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.test {
+  width: 20%;
+  height: 100px;
+  margin: 3rem 0;
+  background: white;
+}
+
 
 
 /*
