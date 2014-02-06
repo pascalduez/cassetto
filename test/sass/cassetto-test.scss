@@ -90,6 +90,13 @@
 }
 
 /*
+ * Test oldstyle-numbers.
+ */
+.test-oldstyle-numbers {
+  @include oldstyle-numbers;
+}
+
+/*
  * Test typography.
  */
 .test-typography {

@@ -1,3 +1,6 @@
+/**
+ * MSFDE Old-Style numbers.
+ */
 /*
  * Test arrowtail.
  */
@@ -186,11 +189,21 @@
  */
 .test-kerning {
   -moz-font-feature-settings: "kern=1";
-  -webkit-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern";
-  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
+}
+
+/*
+ * Test oldstyle-numbers.
+ */
+.test-oldstyle-numbers {
+  -moz-font-feature-settings: "onum=1";
+  -webkit-font-feature-settings: "onum" 1;
+  -moz-font-feature-settings: "onum" 1;
+  font-feature-settings: "onum" 1;
 }
 
 /*
@@ -202,9 +215,9 @@
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "kern=1";
-  -webkit-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern";
-  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
 }
@@ -238,9 +251,9 @@
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "kern=1";
-  -webkit-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern";
-  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
   margin: 0 0 24px;

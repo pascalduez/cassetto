@@ -56,7 +56,7 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
   // Enable kerning on fonts that support it.
   //
   @include experimental(font-feature-settings, "kern=1", $font-feature-old-syntax...);
-  @include experimental(font-feature-settings, "kern", $font-feature-support...);
+  @include experimental(font-feature-settings, "kern" 1, $font-feature-support...);
 
   text-rendering: optimizeLegibility;
   font-kerning: normal;
@@ -64,6 +64,18 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
 
 %kerning {
   @include kerning;
+}
+
+
+/**
+ * MSFDE Old-Style numbers.
+ */
+@mixin oldstyle-numbers {
+  //
+  // Enable Old-Styles nubmers (for fonts that support it).
+  //
+  @include experimental(font-feature-settings, "onum=1", $font-feature-old-syntax...);
+  @include experimental(font-feature-settings, "onum" 1, $font-feature-support...);
 }
 
 
