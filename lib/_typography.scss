@@ -48,12 +48,32 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
 }
 
 
+//
+// Casetto kerning.
+//
+@mixin kerning {
+  //
+  // Enable kerning on fonts that support it.
+  //
+  @include experimental(font-feature-settings, "kern=1", $font-feature-old-syntax...);
+  @include experimental(font-feature-settings, "kern", $font-feature-support...);
+
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+%kerning {
+  @include kerning;
+}
+
+
 @mixin typography-heading {
   //
-  // Triggers hyphenation and apply all-round settings.
   // Activate default ligatures.
+  // Activate default kernings.
   //
   @include ligatures;
+  @include kerning;
 }
 
 
@@ -66,6 +86,7 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
   @include experimental(hyphenate-limit-zone, 10%, $hyphens-support...);
   @include experimental(hyphenate-limit-last, always, $hyphens-support...);
   @include ligatures;
+  @include kerning;
 
   @include rem(margin, 0 0 1.5rem);
 }

@@ -83,6 +83,13 @@
 }
 
 /*
+ * Test kerning.
+ */
+.test-kerning {
+  @include kerning;
+}
+
+/*
  * Test typography.
  */
 .test-typography {

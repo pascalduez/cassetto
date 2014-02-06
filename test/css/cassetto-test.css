@@ -182,6 +182,18 @@
 }
 
 /*
+ * Test kerning.
+ */
+.test-kerning {
+  -moz-font-feature-settings: "kern=1";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+/*
  * Test typography.
  */
 .test-typography h1, .test-typography h2, .test-typography h3, .test-typography h4, .test-typography h5, .test-typography h6 {
@@ -189,6 +201,12 @@
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "kern=1";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
 }
 .test-typography p {
   -webkit-hyphens: auto;
@@ -219,6 +237,12 @@
   -webkit-font-feature-settings: "liga", "dlig";
   -moz-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "kern=1";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
   margin: 0 0 24px;
   margin: 0 0 1.5rem;
 }
