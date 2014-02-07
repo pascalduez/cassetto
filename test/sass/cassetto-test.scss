@@ -177,6 +177,10 @@
       @include cst-icon(social, $icon, $type: "png");
     }
 
+    .icon-single-#{$icon} {
+      @include cst-icon-single(social, $icon);
+    }
+
     .icon-generated-#{$icon} {
       @include cst-icon-generated(social, $icon);
     }
