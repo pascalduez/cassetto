@@ -1,4 +1,3 @@
-
 //
 // Cassetto icons.
 //
@@ -201,8 +200,12 @@ $sprite-maps-2x:   ();
     @include generated($width, $height);
 
     @if ($centered) {
-      @include calc(top, "(50% - #{$height}  /2)", 40%);
-      @include calc(left, "(50% - #{$width}  /2)", 40%);
+      top: 40%;
+      top: calc(50% - #{$height} / 2);
+      // @include calc(top, "(50% - #{$height} / 2)", 40%);
+      left: 40%;
+      left: calc(50% - #{$width} / 2);
+      // @include calc(left, "(50% - #{$width} / 2)", 40%);
     }
 
     @include cst-icon($name, $sprite, $offset, $type);
