@@ -108,11 +108,29 @@
 /*
  * Test truncate.
  */
-.test-truncate {
+.test-truncate .ellipsis {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.test-truncate .clip {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.test-truncate .string {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: "...";
+}
+.test-truncate .two-values {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip ellipsis;
 }
 
 /*

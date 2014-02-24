@@ -51,7 +51,18 @@
  * Test truncate.
  */
 .test-truncate {
-  @include truncate;
+  .ellipsis {
+    @include truncate;
+  }
+  .clip {
+    @include truncate(clip);
+  }
+  .string {
+    @include truncate("...");
+  }
+  .two-values {
+    @include truncate(clip ellipsis);
+  }
 }
 
 /*

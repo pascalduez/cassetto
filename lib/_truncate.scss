@@ -2,14 +2,16 @@
 //
 // Cassetto truncate.
 //
-@mixin truncate {
+@mixin truncate($overflow: ellipsis) {
   //
   // Hide text overflow and add and ellipsis.
   //
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+
+  // [ clip | ellipsis | <string> ]{1,2}
+  text-overflow: $overflow;
 }
 
 %truncate {
