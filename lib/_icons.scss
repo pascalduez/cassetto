@@ -5,34 +5,41 @@
 // or PNG first with hidpi 2x sprite support.
 //
 
-// work in progress... Needs documentation.
+// @TODO: documentation.
 
+@import "SassyLists";
+@import "functions";
+
+
+// A bit of terminology first.
+// sprite = a single image/icon
+// "sprite sheet" or "sprite map" = all sprites combined together
 
 
 // Config
-$sprite-spacing: 20px !default;
+$icons-spacing   : 30px !default;
+$icons-dir       : "icons" !default;
+$icons-dir-png   : "png" !default;
+$icons-dir-hidpi : "png_2x" !default;
 $mq-hidpi: "(min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi)";
 
-// A bit of terminology...
-// sprite = a single image/icon
-// "sprite sheet" or "sprite map" = the final combined image
-
-$sprite-maps-name: ();
-$sprite-maps-1x:   ();
-$sprite-maps-2x:   ();
+// Storage
+$icons-maps: ();
 
 
 
 //
-//
+// Create a new sprite map from folder.
 //
 @mixin cst-sprite-map-create($name) {
-  $map-1x: sprite-map("icons/#{$name}/png/*.png", $spacing: $sprite-spacing);
-  $map-2x: sprite-map("icons/#{$name}/png_2x/*.png", $spacing: $sprite-spacing);
 
-  $sprite-maps-name: append($sprite-maps-name, $name);
-  $sprite-maps-1x: append($sprite-maps-1x, $map-1x);
-  $sprite-maps-2x: append($sprite-maps-2x, $map-2x);
+  $sprites-1x: to-string(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
+  $sprites-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+
+  $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
+  $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
+
+  $icons-maps: map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
 
   %sprite-map-#{$name}-image-map {
     background: {
@@ -45,7 +52,6 @@ $sprite-maps-2x:   ();
       background: {
         image: $map-2x;
         size: ceil(image-width(sprite-path($map-2x)) / 2) auto;
-        // repeat: no-repeat;
       }
     }
   }
@@ -54,26 +60,15 @@ $sprite-maps-2x:   ();
 
 
 //
+// Helper: retreive a sprite map.
 //
-//
-@function _cst-sprite-map-get($name, $factor: "1x") {
-  $ret: ();
-  $index: index($sprite-maps-name, $name);
-
-  @if ($factor == "1x") {
-    $ret: nth($sprite-maps-1x, $index);
-  }
-  @else if ($factor == "2x") {
-    $ret: nth($sprite-maps-2x, $index);
-  }
-
-  @return $ret;
+@function _cst-sprite-map-get($name, $factor: 1x) {
+  @return map-get(map-get($icons-maps, $name), $factor);
 }
 
 
-
 //
-//
+// Helper: return correct sprites-map `background-position`.
 //
 @function _cst-sprite-position($map, $sprite, $offset-x: 0, $offset-y: 0, $multiplier: 1) {
   $pos: sprite-position($map, $sprite, $offset-x * $multiplier, $offset-y * $multiplier);
@@ -83,12 +78,12 @@ $sprite-maps-2x:   ();
 
 
 //
-//
+// Main icon mixin.
 //
 @mixin cst-icon($name, $sprite, $offset: 0 0, $type: "svg") {
 
-  $map-1x: _cst-sprite-map-get($name, "1x");
-  $map-2x: _cst-sprite-map-get($name, "2x");
+  $map-1x: _cst-sprite-map-get($name);
+  $map-2x: _cst-sprite-map-get($name, 2x);
 
   // Shorter mixin calls.
   $offset-x: nth($offset, 1);
@@ -96,7 +91,7 @@ $sprite-maps-2x:   ();
 
   @if ($type == "svg") {
 
-    $svg-file: "icons/#{$name}/#{$sprite}.svg";
+    $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
 
     background: {
       image: inline-image($svg-file);
@@ -112,11 +107,7 @@ $sprite-maps-2x:   ();
 
       @extend %sprite-map-#{$name}-image-map;
 
-      background: {
-        //image: $map-1x;
-        position: _cst-sprite-position($map-1x, $sprite, $offset-x, $offset-y);
-        //repeat: no-repeat;
-      }
+      background-position: _cst-sprite-position($map-1x, $sprite, $offset-x, $offset-y);
     }
 
   }
@@ -131,28 +122,23 @@ $sprite-maps-2x:   ();
     @media #{$mq-hidpi} {
       background-position: _cst-sprite-position($map-2x, $sprite, $offset-x, $offset-y, 2);
     }
-
   }
-
 }
 
 
 
 //
-//
+// Embed a single icon as inline-image (no sprite).
+// Should be used very sporadically.
 //
 @mixin cst-icon-single($name, $sprite, $type: "svg") {
 
-  // $map-1x: _cst-sprite-map-get($name, "1x");
-  // $map-2x: _cst-sprite-map-get($name, "2x");
-
-  $svg-file: "icons/#{$name}/#{$sprite}.svg";
-  $png-file-1x: "icons/#{$name}/png/#{$sprite}.png";
-  $png-file-2x: "icons/#{$name}/png_2x/#{$sprite}.png";
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
-  // $png-file-1x: sprite-file($map-1x, $sprite);
-  // $png-file-2x: sprite-file($map-2x, $sprite);
+
+  $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: to-string(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
+  $png-file-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
 
   @if ($type == "svg") {
 
@@ -187,12 +173,15 @@ $sprite-maps-2x:   ();
 
 
 //
+// Include the icon in a generated "pseudo-element".
+// Default to :before
+// Allows for easier positioning or centering.
 //
-//
-@mixin cst-icon-generated($name, $sprite, $offset: 0 0, $type: "svg", $centered: false) {
+@mixin cst-icon-generated($name, $sprite, $type: "svg", $pos: "before", $centered: false) {
   position: relative;
-  &:before {
-    $map-1x: _cst-sprite-map-get($name, "1x");
+
+  &:#{$pos} {
+    $map-1x: _cst-sprite-map-get($name);
 
     $width: image-width(sprite-file($map-1x, $sprite));
     $height: image-height(sprite-file($map-1x, $sprite));
@@ -200,15 +189,13 @@ $sprite-maps-2x:   ();
     @include generated($width, $height);
 
     @if ($centered) {
-      top: 40%;
+      top: 35%;
       top: calc(50% - #{$height} / 2);
-      // @include calc(top, "(50% - #{$height} / 2)", 40%);
-      left: 40%;
+      left: 35%;
       left: calc(50% - #{$width} / 2);
-      // @include calc(left, "(50% - #{$width} / 2)", 40%);
     }
 
-    @include cst-icon($name, $sprite, $offset, $type);
+    @include cst-icon($name: $name, $sprite: $sprite, $type: $type);
 
     @content;
   }
