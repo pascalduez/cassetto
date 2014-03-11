@@ -9,16 +9,16 @@
  */
 .test-arrowtail {
   .top {
-    @include arrowtail( "top", rgba(0, 0 ,0, .5), $diagonal: 30px );
+    @include arrowtail("top", rgba(0, 0 ,0, .5), $diagonal: 30px);
   }
   .right {
-    @include arrowtail( "right", rgba(0, 0 ,0, .5), $diagonal: 30px );
+    @include arrowtail("right", rgba(0, 0 ,0, .5), $diagonal: 30px);
   }
   .bottom {
-    @include arrowtail( "bottom", rgba(0, 0 ,0, .5), $diagonal: 30px );
+    @include arrowtail("bottom", rgba(0, 0 ,0, .5), $diagonal: 30px);
   }
   .left {
-    @include arrowtail( "left", rgba(0, 0 ,0, .5), $diagonal: 30px );
+    @include arrowtail("left", rgba(0, 0 ,0, .5), $diagonal: 30px);
   }
 }
 
@@ -27,16 +27,16 @@
  */
 .test-bevel {
   .top {
-    box-shadow: bevel( "top", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+    box-shadow: bevel("top", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
   }
   .right {
-    box-shadow: bevel( "right", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+    box-shadow: bevel("right", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
   }
   .bottom {
-    box-shadow: bevel( "bottom", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+    box-shadow: bevel("bottom", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
   }
   .left {
-    box-shadow: bevel( "left", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5) );
+    box-shadow: bevel("left", rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
   }
 }
 
@@ -44,7 +44,7 @@
  * Test leading.
  */
 .test-leading {
-  @include leading( 1.6, 1.5 );
+  @include leading(1.6, 1.5);
 }
 
 /*

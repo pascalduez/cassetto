@@ -34,7 +34,7 @@
   $optimized: ("scroll-position", "contents", "transform", "opacity");
 
   @each $prop in $props {
-    @if (index($optimized, $prop) == false) {
+    @if (not index($optimized, $prop)) {
      @warn "will-change will have no effect on #{$prop}";
     }
   }
