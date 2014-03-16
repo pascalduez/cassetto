@@ -41,13 +41,13 @@ $icons-maps: ();
 
   $icons-maps: map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
 
-  %sprite-map-#{$name}-image-map {
+  @at-root %sprite-map-#{$name}-image-map {
     background: {
       image: $map-1x;
       repeat: no-repeat;
     }
   }
-  %sprite-map-#{$name}-2x-image-map {
+  @at-root %sprite-map-#{$name}-2x-image-map {
     @media #{$mq-hidpi} {
       background: {
         image: $map-2x;

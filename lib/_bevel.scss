@@ -2,53 +2,26 @@
 //
 // Cassetto bevel.
 //
-@function bevel( $direction, $color-dark, $color-light ) {
+@function bevel($direction, $color-dark, $color-light) {
   //
   // Create a bevel effect with 2 adjacent 1px lines.
   //
-  $ret: "";
 
   $params: (
-    (inset 0 1px 0 0 $color-dark, inset 0 2px 0 0 $color-light),   // top
-    (inset -1px 0 0 0 $color-light, inset -2px 0 0 $color-dark),   // right
-    (inset 0 -1px 0 0 $color-light, inset 0 -2px 0 0 $color-dark), // bottom
-    (inset 1px 0 0 0 $color-dark, inset 2px 0 0 0 $color-light),   // left
-    (inset 0 1px 0 0 $color-light, inset 0 2px 0 0 $color-dark),   // top inverted
-    (inset -1px 0 0 0 $color-dark, inset -2px 0 0 $color-light),   // right inverted
-    (inset 0 -1px 0 0 $color-dark, inset 0 -2px 0 0 $color-light), // bottom inverted
-    (inset 1px 0 0 0 $color-light, inset 2px 0 0 0 $color-dark)    // left inverted
+    "top": (inset 0 1px 0 0 $color-dark, inset 0 2px 0 0 $color-light),
+    "right": (inset -1px 0 0 0 $color-light, inset -2px 0 0 $color-dark),
+    "bottom": (inset 0 -1px 0 0 $color-light, inset 0 -2px 0 0 $color-dark),
+    "left": (inset 1px 0 0 0 $color-dark, inset 2px 0 0 0 $color-light),
+    "top inverted": (inset 0 1px 0 0 $color-light, inset 0 2px 0 0 $color-dark),
+    "right inverted": (inset -1px 0 0 0 $color-dark, inset -2px 0 0 $color-light),
+    "bottom inverted": (inset 0 -1px 0 0 $color-dark, inset 0 -2px 0 0 $color-light),
+    "left inverted": (inset 1px 0 0 0 $color-light, inset 2px 0 0 0 $color-dark)
   );
 
-  @if $direction == "top" {
-    $ret: nth($params, 1);
-  }
-  @if $direction == "right" {
-    $ret: nth($params, 2);
-  }
-  @if $direction == "bottom" {
-    $ret: nth($params, 3);
-  }
-  @if $direction == "left" {
-    $ret: nth($params, 4);
-  }
-  @if $direction == "top bottom" {
-    $ret: nth($params, 1), nth($params, 3);
-  }
-  @if $direction == "left right" {
-    $ret: nth($params, 4), nth($params, 2);
-  }
-  @if $direction == "top inverted" {
-    $ret: nth($params, 5);
-  }
-  @if $direction == "right inverted" {
-    $ret: nth($params, 6);
-  }
-  @if $direction == "bottom inverted" {
-    $ret: nth($params, 7);
-  }
-  @if $direction == "left inverted" {
-    $ret: nth($params, 8);
-  }
+  $params: map-merge($params, (
+    "top bottom": (map-get($params, "top"), map-get($params, "bottom")),
+    "left right": (map-get($params, "left"), map-get($params, "right"))
+  ));
 
-  @return $ret;
+  @return map-get($params, $direction);
 }
