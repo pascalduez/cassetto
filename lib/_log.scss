@@ -1,0 +1,14 @@
+
+//
+// Cassetto log
+//
+@mixin log($args...) {
+  //
+  // Log into the stylesheet (e.g.: sassmeister)
+  //
+  @at-root log {
+    @each $key, $value in keywords($args) {
+      #{$key}: inspect($value)
+    }
+  }
+}

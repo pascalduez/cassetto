@@ -168,3 +168,10 @@
     @include generated(20px, 20px, $top: 0, $left: 0);
   }
 }
+
+/*
+ * Test log.
+ */
+.test-log {
+  @include log($size: 50px, $message: "An error message", $bool: false, $val: null);
+}

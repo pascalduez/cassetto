@@ -359,3 +359,13 @@
   left: 0;
   z-index: 1;
 }
+
+/*
+ * Test log.
+ */
+log {
+  size: 50px;
+  message: "An error message";
+  bool: false;
+  val: null;
+}
