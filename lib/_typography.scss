@@ -67,9 +67,9 @@ $font-feature-support: -moz, -webkit, not -o, not -ms, not -khtml, official;
 }
 
 
-/**
- * MSFDE Old-Style numbers.
- */
+//
+// Cassetto old-Style numbers.
+//
 @mixin oldstyle-numbers {
   //
   // Enable Old-Styles nubmers (for fonts that support it).
