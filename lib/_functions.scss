@@ -1,7 +1,47 @@
 
-//
-// Map set.
-//
+// Push new entry to `$map`
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param $key
+// @param $value
+// --------------------------------------------------------------------------------
+// @return [map]
+
 @function map-set($map, $key, $value) {
   @return map-merge($map, ($key: $value));
+}
+
+
+
+// Remove unit from `$number`
+// --------------------------------------------------------------------------------
+// @param [number] $number
+// --------------------------------------------------------------------------------
+// @return [number]
+
+@function _strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+
+// Join `$list` into a string
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [string] $glue
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _join($list, $glue: "") {
+  $result: "";
+
+  @if length($list) < 1 {
+    @return $result;
+  }
+
+  @for $i from 1 through length($list) {
+    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  }
+
+  @return $result;
 }

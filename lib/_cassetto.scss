@@ -7,56 +7,17 @@
 @import "compass/css3/transform";
 
 //
-// Import typography
+// Import cassetto
 //
 @import "typography";
-
-//
-// Import whitespace
-//
 @import "whitespace";
-
-//
-// Import centerd items
-//
 @import "centered-items";
-
-//
-// Import leading
-//
 @import "leading";
-
-//
-// Import truncate
-//
 @import "truncate";
-
-//
-// Import bevel
-//
 @import "bevel";
-
-//
-// Import arrowtail
-//
 @import "arrowtail";
-
-//
-// Import calc
-//
 @import "calc";
-
-//
-// Import accelerate
-//
 @import "accelerate";
-
-//
-// Import generated
-//
 @import "generated";
-
-//
-// Import log
-//
 @import "log";
+@import "functions";

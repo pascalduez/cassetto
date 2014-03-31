@@ -175,3 +175,12 @@
 .test-log {
   @include log($size: 50px, $message: "An error message", $bool: false, $val: null);
 }
+
+/*
+ * Test functions.
+ */
+.test-functions {
+  map-set: inspect(map-set((key: value), new, value));
+  strip-unit: inspect(_strip-unit(10px));
+  join: inspect(_join((one, two, three), "/"));
+}
