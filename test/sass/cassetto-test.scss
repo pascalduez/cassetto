@@ -182,5 +182,5 @@
 .test-functions {
   map-set: inspect(map-set((key: value), new, value));
   strip-unit: inspect(_strip-unit(10px));
-  join: inspect(_join((one, two, three), "/"));
+  join: inspect(js-join((one, two, three), "/"));
 }

@@ -32,7 +32,7 @@
 // --------------------------------------------------------------------------------
 // @return [string]
 
-@function _join($list, $glue: "") {
+@function js-join($list, $glue: "") {
   $result: "";
 
   @if length($list) < 1 {
