@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 // @return [map]
 
-@function map-set($map, $key, $value) {
+@function _map-set($map, $key, $value) {
   @return map-merge($map, ($key: $value));
 }
 
@@ -32,7 +32,7 @@
 // --------------------------------------------------------------------------------
 // @return [string]
 
-@function js-join($list, $glue: "") {
+@function _join($list, $glue: "") {
   $result: "";
 
   @if length($list) < 1 {
@@ -42,6 +42,140 @@
   @for $i from 1 through length($list) {
     $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
   }
+
+  @return $result;
+}
+
+
+
+// A Sass micro-templating function.
+// --------------------------------------------------------------------------------
+// @param [string] $format
+// @param [arglist] $args
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function template($format, $args...) {
+  $result: $format;
+
+  @each $key, $value in keywords($args) {
+    $token: "{{#{$key}}}";
+    $length: str-length($token);
+    $index: str-index($result, $token);
+
+    @if not $index { @return $result; }
+
+    @if $index {
+      $result: str-slice($result, 1, $index - 1) + $value + str-slice($result, ($index + $length));
+
+      @if str-index($result, $token) {
+        $result: template($result, $args...);
+      }
+    }
+  }
+
+  @return $result;
+}
+
+
+
+// Capitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+// Alias
+@function str-ucfirst($string) {
+  @return capitalize($string);
+}
+
+
+
+// Uncapitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function uncapitalize($string) {
+  @return to-lower-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+// Alias
+@function str-lcfirst($string) {
+  @return uncapitalize($string);
+}
+
+
+
+// Capitalize each word in string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function str-ucwords($string) {
+  $progress: $string;
+  $result: "";
+
+  $running: true;
+
+  @while $running {
+    $index: str-index($progress, " ");
+    @if $index {
+      $result: $result + capitalize(str-slice($progress, 1, $index));
+      $progress: str-slice($progress, ($index + 1));
+    }
+    @else {
+      $running: false;
+    }
+  }
+
+  @return capitalize($result) + capitalize($progress);
+}
+
+
+
+// Return whether `$value` is contained in `$list`
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [$value] $value
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function contain($list, $value) {
+  @return not not index($list, $value);
+}
+
+
+
+// Camelize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function camelize($string) {
+  $progress: $string;
+  $result: "";
+  $exclude: " ", "-", ",", ".";
+
+  @while str-length($progress) > 0  {
+    $char: str-slice($progress, 1, 1);
+
+    @if contain($exclude, $char) {
+      $progress: capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
+    }
+    @else {
+      $result: $result + $char;
+      $progress: str-slice($progress, 2);
+    }
+ }
 
   @return $result;
 }
