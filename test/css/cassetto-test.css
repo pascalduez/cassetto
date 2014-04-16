@@ -366,12 +366,3 @@ log {
   bool: false;
   val: null;
 }
-
-/*
- * Test functions.
- */
-.test-functions {
-  map-set: (key: value, new: value);
-  strip-unit: 10;
-  join: "one/two/three";
-}

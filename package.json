@@ -1,22 +1,42 @@
 {
   "name": "Cassetto",
   "version": "0.0.1",
-  "license": "unlicence",
+  "keywords": [
+    "sass",
+    "scss",
+    "css"
+  ],
+  "homepage": "https://github.com/pascalduez/cassetto",
+  "bugs": "https://github.com/pascalduez/cassetto/issues",
+  "author": {
+    "name": "Pascal Duez",
+    "url": "https://github.com/pascalduez"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pascalduez/cassetto.git"
+  },
+  "license": {
+    "type": "unlicence",
+    "url": "http://unlicense.org"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-autoprefixer": "^0.7.2",
-    "grunt-browser-sync": "^0.7.4",
+    "grunt-browser-sync": "^0.8.0",
     "grunt-contrib-concat": "^0.4.0",
     "grunt-contrib-sass": "^0.7.3",
     "grunt-contrib-watch": "^0.6.1",
     "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1"
+    "time-grunt": "^0.3.1",
+    "bootcamp": "^1.1.4"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "install": "bundle install --path ."
+    "install": "bundle install --path .",
+    "test": "grunt test"
   }
 }

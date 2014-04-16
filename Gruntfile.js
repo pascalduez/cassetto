@@ -4,7 +4,10 @@
 module.exports = function(grunt) {
 
   // Load all grunt tasks matching the `grunt-*` pattern.
-  require("load-grunt-tasks")(grunt);
+  require("load-grunt-tasks")(grunt, {
+    pattern: ["grunt-*", "bootcamp"],
+    scope: "devDependencies"
+  });
 
   // Time how long tasks take.
   require("time-grunt")(grunt);
@@ -25,13 +28,14 @@ module.exports = function(grunt) {
     conf: config,
 
     sass: {
+      options: {
+        //trace: true,
+        bundleExec: true,
+        compass: true,
+        style: "expanded",
+        loadPath: ["./node_modules/bootcamp/dist", "./<%= conf.src %>"]
+      },
       test: {
-        options: {
-          //trace: true,
-          bundleExec: true,
-          style: "expanded",
-          loadPath: ["./<%= conf.src %>"]
-        },
         files: [{
           expand: true,
           cwd: "<%= conf.scss %>",
@@ -42,10 +46,18 @@ module.exports = function(grunt) {
       }
     },
 
+    bootcamp: {
+      test: {
+        files: {
+          src: ["<%= conf.css %>/functions.css"]
+        }
+      }
+    },
+
     watch: {
       test: {
         files: ["<%= conf.scss %>/*.scss"],
-        tasks: ["sass"]
+        tasks: ["sass", "bootcamp"]
       }
     },
 
@@ -88,7 +100,7 @@ module.exports = function(grunt) {
           "<%= conf.src %>/cassetto/_bevel.scss",
           "<%= conf.src %>/cassetto/_calc.scss",
           "<%= conf.src %>/cassetto/_centered-items.scss",
-          "<%= conf.src %>/cassetto/_functions.scss",
+          "<%= conf.src %>/cassetto/functions/_functions.scss",
           "<%= conf.src %>/cassetto/_generated.scss",
           "<%= conf.src %>/cassetto/_leading.scss",
           "<%= conf.src %>/cassetto/_log.scss",

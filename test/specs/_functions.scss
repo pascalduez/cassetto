@@ -1,0 +1,67 @@
+
+@include describe("The _strip-unit function") {
+  @include it("should always return a number") {
+    @include should(expect(_strip-unit(1px)), to(have-type-of("number")));
+    @include should(expect(_strip-unit(100%)), to(have-type-of("number")));
+  }
+}
+
+
+
+@include describe("The _join function") {
+  $list-1: (one, two, three);
+  $list-2: ("one", "two", "three");
+
+  @include it("should always return a string") {
+    @include should(expect(_join($list-1, ",")), to(have-type-of("string")));
+    @include should(expect(_join($list-2, "/")), to(have-type-of("string")));
+  }
+
+  @include it("should return a concatenated string") {
+    @include should(expect(_join($list-1, ", ")), to(be("one, two, three")));
+    @include should(expect(_join($list-2, "/")), to(be("one/two/three")));
+  }
+}
+
+
+
+@include describe("The template function") {
+  $input: '<svg xmlns="http://www.w3.org/2000/svg" width="{{width}}" height="{{height}}"></svg>';
+  $output: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>';
+
+  @include it("should always return a string") {
+    @include should(expect(template($input, $width: 10, $height: 10)), to(have-type-of("string")));
+  }
+
+  @include it("should return a capitalized string") {
+    @include should(expect(template($input, $width: 10, $height: 10)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The capitalize function") {
+  $str: "berlin";
+
+  @include it("should always return a string") {
+    @include should(expect(capitalize($str)), to(have-type-of("string")));
+  }
+
+  @include it("should return a capitalized string") {
+    @include should(expect(capitalize($str)), to(be("Berlin")));
+  }
+}
+
+
+
+@include describe("The uncapitalize function") {
+  $str: "Berlin";
+
+  @include it("should always return a string") {
+    @include should(expect(uncapitalize($str)), to(have-type-of("string")));
+  }
+
+  @include it("should return an uncapitalized string") {
+    @include should(expect(uncapitalize($str)), to(be("berlin")));
+  }
+}
