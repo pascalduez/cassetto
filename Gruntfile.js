@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     bootcamp: {
       test: {
         files: {
-          src: ["<%= conf.css %>/functions.css"]
+          src: ["<%= conf.css %>/functions-test.css"]
         }
       }
     },

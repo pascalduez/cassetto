@@ -1,4 +1,19 @@
 
+@include describe("The _map-set function") {
+  $input: (one: 1, two: 2);
+  $output: (one: 1, two: 2, three: 3);
+
+  @include it("should always return a map") {
+    @include should(expect(_map-set($input, three, 3)), to(have-type-of("map")));
+  }
+
+  @include it("should append the new entry") {
+    @include should(expect(_map-set($input, three, 3)), to(be($output)));
+  }
+}
+
+
+
 @include describe("The _strip-unit function") {
   @include it("should always return a number") {
     @include should(expect(_strip-unit(1px)), to(have-type-of("number")));
@@ -41,27 +56,70 @@
 
 
 @include describe("The capitalize function") {
-  $str: "berlin";
+  $input: "berlin";
+  $output: "Berlin";
 
   @include it("should always return a string") {
-    @include should(expect(capitalize($str)), to(have-type-of("string")));
+    @include should(expect(capitalize($input)), to(have-type-of("string")));
   }
 
   @include it("should return a capitalized string") {
-    @include should(expect(capitalize($str)), to(be("Berlin")));
+    @include should(expect(capitalize($input)), to(be($output)));
   }
 }
 
 
 
 @include describe("The uncapitalize function") {
-  $str: "Berlin";
+  $input: "Berlin";
+  $output: "berlin";
 
   @include it("should always return a string") {
-    @include should(expect(uncapitalize($str)), to(have-type-of("string")));
+    @include should(expect(uncapitalize($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return a uncapitalized string") {
+    @include should(expect(uncapitalize($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The str-ucwords function") {
+  $input: "such string, very sassy. wow.";
+  $output: "Such String, Very Sassy. Wow.";
+
+  @include it("should always return a string") {
+    @include should(expect(str-ucwords($input)), to(have-type-of("string")));
   }
 
   @include it("should return an uncapitalized string") {
-    @include should(expect(uncapitalize($str)), to(be("berlin")));
+    @include should(expect(str-ucwords($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The contain function") {
+  $list: one, two, three;
+
+  @include it("should return a boolean") {
+    @include should(expect(contain($list, one)), to(be-truthy()));
+    @include should(expect(contain($list, four)), to(be-falsy()));
+  }
+}
+
+
+
+@include describe("The camelize function") {
+  $input: "a constructor-function name.";
+  $output: "aConstructorFunctionName";
+
+  @include it("should always return a string") {
+    @include should(expect(camelize($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return an camelized string") {
+    @include should(expect(camelize($input)), to(be($output)));
   }
 }
