@@ -123,3 +123,45 @@
     @include should(expect(camelize($input)), to(be($output)));
   }
 }
+
+
+
+@include describe("The _map-keys function") {
+  $input: (one: 1px, two: 2px);
+  $output: (one two);
+
+  $test: _map-keys($input);
+
+  @include it("should always return a list") {
+    @include should(expect($test), to(have-type-of("list")));
+  }
+
+  @include it("should return a list of keys") {
+    @include should(expect($test), to(be($output)));
+  }
+
+  @include it("should return a list with specified separator") {
+    @include should(expect(list-separator($test)), to(be(space)));
+  }
+}
+
+
+
+@include describe("The _map-values function") {
+  $input: (one: 1px, two: 2px);
+  $output: (1px 2px);
+
+  $test: _map-values($input);
+
+  @include it("should always return a list") {
+    @include should(expect($test), to(have-type-of("list")));
+  }
+
+  @include it("should return a list of values") {
+    @include should(expect($test), to(be($output)));
+  }
+
+  @include it("should return a list with specified separator") {
+    @include should(expect(list-separator($test)), to(be(space)));
+  }
+}

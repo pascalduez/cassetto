@@ -179,3 +179,34 @@
 
   @return $result;
 }
+
+
+
+// Sass core function return comma separated lists.
+// configurabele _map-keys and _map-values functions.
+// Does not work with nested maps. (neither core).
+
+
+// Returns a list of all keys in a map.
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param [string] $separator: space | comma | auto
+// --------------------------------------------------------------------------------
+// @return [list]
+
+@function _map-keys($map, $separator: space) {
+  @return join((), map-keys($map), $separator);
+}
+
+
+
+// Returns a list of all values in a map.
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param [string] $separator: space | comma | auto
+// --------------------------------------------------------------------------------
+// @return [list]
+
+@function _map-values($map, $separator: space) {
+  @return join((), map-values($map), $separator);
+}
