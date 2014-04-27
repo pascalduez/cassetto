@@ -165,3 +165,24 @@
     @include should(expect(list-separator($test)), to(be(space)));
   }
 }
+
+
+
+@include describe("The empty function") {
+  $true: false, null, "", 0, ();
+  $false: true, "str", 1, (1,), (1: 1);
+
+  @include it("should always return a boolean") {
+    @include should(expect(empty(0)), to(have-type-of("bool")));
+    @include should(expect(empty(1)), to(have-type-of("bool")));
+  }
+
+  @include it("should test for empty values") {
+    @each $test in $true {
+      @include should(expect(empty($test)), to(be-truthy()));
+    }
+    @each $test in $false {
+      @include should(expect(empty($test)), to(be-falsy()));
+    }
+  }
+}
