@@ -186,3 +186,20 @@
     }
   }
 }
+
+
+
+@include describe("The strict-eq function") {
+  $true: strict-eq(10px, 10px);
+  $false: strict-eq(10px, 10%);
+
+  @include it("should always return a boolean") {
+    @include should(expect($true), to(have-type-of("bool")));
+    @include should(expect($false), to(have-type-of("bool")));
+  }
+
+  @include it("should test for strictly equal values") {
+    @include should(expect($true), to(be-truthy()));
+    @include should(expect($false), to(be-falsy()));
+  }
+}

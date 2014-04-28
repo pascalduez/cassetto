@@ -163,7 +163,7 @@
 @function camelize($string) {
   $progress: $string;
   $result: "";
-  $exclude: " ", "-", ",", ".";
+   $exclude: " ", "-", "–", "—", "_", ",", ";", ":", ".";
 
   @while str-length($progress) > 0  {
     $char: str-slice($progress, 1, 1);
@@ -228,4 +228,19 @@
     @return true;
   }
   @return false;
+}
+
+
+
+// Test whether `$a` is strictly equal to `$b`.
+// --------------------------------------------------------------------------------
+// @param $a
+// @param $b
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function strict-eq($a, $b) {
+  @return $a == $b
+      and type-of($a) == type-of($b)
+      and unit($a) == unit($b);
 }
