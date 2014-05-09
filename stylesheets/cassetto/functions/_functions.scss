@@ -248,3 +248,39 @@
       and type-of($a) == type-of($b)
       and unit($a) == unit($b);
 }
+
+
+
+// A Sass `map-fetch` function
+
+@function head($list) {
+  @return nth($list, 1);
+}
+
+@function tail($list) {
+  $return: ();
+
+  @for $i from 2 through length($list) {
+    $return: append($return, nth($list, $i));
+  }
+
+  @return $return;
+}
+
+// Recursively fetch deep value from nested map.
+// -----------------------------------------------------------------------------
+// @param [map] $map
+// @param [list] $list
+// -----------------------------------------------------------------------------
+// @return [literal]
+
+@function map-fetch($map, $keys) {
+  $value: map-get($map, head($keys));
+
+  @if (length($keys) > 1) {
+    @return map-fetch($value, tail($keys));
+  }
+  @else {
+    @return $value;
+  }
+}

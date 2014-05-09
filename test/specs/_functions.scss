@@ -203,3 +203,20 @@
     @include should(expect($false), to(be-falsy()));
   }
 }
+
+
+
+@include describe("The map-fetch function") {
+  $map: (
+    one: (
+      two: (
+        three: "yeah!"
+      )
+    )
+  );
+  $test: map-fetch($map, one two three);
+
+  @include it("should return a deep nested value") {
+    @include should(expect($test), to(be("yeah!")));
+  }
+}
