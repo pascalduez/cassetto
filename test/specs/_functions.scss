@@ -220,3 +220,40 @@
     @include should(expect($test), to(be("yeah!")));
   }
 }
+
+
+
+@include describe("The is-in-range function") {
+  $true: is-in-range(0, 10, 5);
+  $false: is-in-range(0, 10, -2);
+
+  @include it("should always return a boolean") {
+    @include should(expect($true), to(have-type-of("bool")));
+    @include should(expect($false), to(have-type-of("bool")));
+  }
+
+  @include it("should test for range") {
+    @include should(expect($true), to(be-truthy()));
+    @include should(expect($false), to(be-falsy()));
+  }
+}
+
+
+
+@include describe("The clamp function") {
+  $under: clamp(0, 10, -2);
+  $between: clamp(0, 10, 5);
+  $over: clamp(0, 10, 12);
+
+  @include it("should always return a number") {
+    @include should(expect($under), to(have-type-of("number")));
+    @include should(expect($between), to(have-type-of("number")));
+    @include should(expect($over), to(have-type-of("number")));
+  }
+
+  @include it("should return a clamped number") {
+    @include should(expect($under), to(be(0)));
+    @include should(expect($between), to(be(5)));
+    @include should(expect($over), to(be(10)));
+  }
+}
