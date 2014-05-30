@@ -257,3 +257,20 @@
     @include should(expect($over), to(be(10)));
   }
 }
+
+
+
+@include describe("The is-file function") {
+  $true: is-file("test.svg");
+  $false: is-file("img/svg");
+
+  @include it("should always return a boolean") {
+    @include should(expect($true), to(have-type-of("bool")));
+    @include should(expect($false), to(have-type-of("bool")));
+  }
+
+  @include it("should test for a file name") {
+    @include should(expect($true), to(be-truthy()));
+    @include should(expect($false), to(be-falsy()));
+  }
+}

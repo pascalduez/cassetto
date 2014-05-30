@@ -312,3 +312,22 @@
 @function clamp($min, $max, $value) {
   @return if($value > $max, $max, if($value < $min, $min, $value));
 }
+
+
+
+// Test whether `$value` looks like a file.
+// -----------------------------------------------------------------------------
+// @param [string] $value
+// @param [string] $extension
+// -----------------------------------------------------------------------------
+// @return [boolean]
+
+@function is-file($value, $extension: svg) {
+  $ext: '.#{$extension}';
+  $length: str-length($ext);
+
+  @return type-of($value) == string
+      and $value != ''
+      and not not str-index($value, $ext)
+      and str-slice($value, -$length) == $ext;
+}
