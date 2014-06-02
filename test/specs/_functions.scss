@@ -223,6 +223,45 @@
 
 
 
+@include describe("The map-deep-merge function") {
+  $map: (
+    one: (
+      val: 1,
+      two: (
+        val: 2,
+        three: (
+          val: 3,
+          four: (
+            val: 4
+          )
+        )
+      )
+    ),
+    foo: "foo",
+    bar: "bar"
+  );
+   /* It should append a new value */
+  $append: map-deep-merge($map, one two three four, (test: "flag!"));
+  $append-val: map-fetch($append, one two three four test);
+  /* It should update a defined value */
+  $update: map-deep-merge($map, one two three four, (val: "flag!"));
+  $update-val: map-fetch($update, one two three four val);
+
+  @include it("should always return a map") {
+    @include should(expect($append), to(have-type-of("map")));
+  }
+
+  @include it("should append a new value") {
+    @include should(expect($append-val), to(be("flag!")));
+  }
+
+  @include it("should update a defined value") {
+    @include should(expect($update-val), to(be("flag!")));
+  }
+}
+
+
+
 @include describe("The is-in-range function") {
   $true: is-in-range(0, 10, 5);
   $false: is-in-range(0, 10, -2);

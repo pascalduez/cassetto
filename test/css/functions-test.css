@@ -1,11 +1,13 @@
 @charset "UTF-8";
 /* >> Bootcamp >> */
+/* It should append a new value */
+/* It should update a defined value */
 Test Results {
   Success: true;
-  Stats:  ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔;
-  Tests: 33;
-  Asserts: 57;
-  Passed: 33;
+  Stats:  ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔;
+  Tests: 36;
+  Asserts: 60;
+  Passed: 36;
   Failed: 0;
   Skipped: 0;
 }
