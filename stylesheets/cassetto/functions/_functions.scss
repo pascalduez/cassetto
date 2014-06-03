@@ -309,6 +309,10 @@
   $length: length($keys);
   $last: nth($keys, $length);
 
+  @if $length == 1 {
+    @return map-merge($map, (nth($keys, 1): $new));
+  }
+
   @each $key in $keys {
     $map: map-get($map, $key);
     @if $key == $last {
