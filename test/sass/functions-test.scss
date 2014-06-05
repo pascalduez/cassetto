@@ -3,4 +3,5 @@
 
 @include runner-start;
 @import "../specs/functions";
+@import "../specs/positional_notation";
 @include runner-end;

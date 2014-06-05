@@ -1,0 +1,85 @@
+
+@include describe("Binary test") {
+  $fixture: (
+    '-1': -1,
+    '0': 0,
+    '1': 1,
+    '10': 2,
+    '11': 3,
+    '100': 4,
+    '101': 5,
+    '110': 6,
+    '111': 7,
+    '1000': 8,
+    '1001': 9,
+    '1010': 10,
+    '11110010101111': 15535,
+    '1001001000111100': 37436,
+    '111001101101100001100100111001': 968235321
+  );
+
+  @include it("should encode or decode binary properly") {
+    @each $str, $num in $fixture {
+      @include should(expect(parseInt($str, 2)), to(be($num)));
+      @include should(expect(toString($num, 2)), to(be($str)));
+    }
+  }
+}
+
+
+
+@include describe("Hexadecimal test") {
+  $fixture: (
+    '-1': -1,
+    '0': 0,
+    '1': 1,
+    '2': 2,
+    '3': 3,
+    '4': 4,
+    '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+    'a': 10,
+    '3caf': 15535,
+    '923c': 37436,
+    '39b61939': 968235321
+  );
+
+  @include it("should encode or decode hexadecimal properly") {
+    @each $str, $num in $fixture {
+      @include should(expect(parseInt($str, 16)), to(be($num)));
+      @include should(expect(toString($num, 16)), to(be($str)));
+    }
+  }
+}
+
+
+
+@include describe("Base36 test") {
+  $fixture: (
+    '-1': -1,
+    '0': 0,
+    '1': 1,
+    '2': 2,
+    '3': 3,
+    '4': 4,
+    '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+    'a': 10,
+    'bzj': 15535,
+    'svw': 37436,
+    'g0gn5l': 968235321
+  );
+
+  @include it("should encode or decode base36 properly") {
+    @each $str, $num in $fixture {
+      @include should(expect(parseInt($str, 36)), to(be($num)));
+      @include should(expect(toString($num, 36)), to(be($str)));
+    }
+  }
+}

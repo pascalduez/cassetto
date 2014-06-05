@@ -1,0 +1,75 @@
+
+// JavaScript `toString` and `parseInt` implementation in Sass.
+
+@function pow($val, $pow) {
+  $res: 1;
+  @while($pow > 0) {
+    $res: $res * $val;
+    $pow: $pow - 1;
+  }
+  @return $res;
+}
+
+@function charsFromBase($base: 10) {
+  $chars:(
+    // Binary
+    2: '01',
+    // Octal
+    8: '01234567',
+    // Decimal
+    10: '0123456789',
+    // Hexadecimal
+    16: '0123456789abcdef',
+    // Base 36
+    36: '0123456789abcdefghijklmnopqrstuvwxyz',
+    // Base 64
+    64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/'
+  );
+
+  @return if(map-has-key($chars, $base), map-get($chars, $base), null);
+}
+
+@function toString($num, $radix: 10) {
+  $chars: charsFromBase($radix);
+  $base: str-length($chars);
+  $result: '';
+  $sign: '';
+
+  @if $num < 0 {
+    $sign: '-';
+    $num: abs($num);
+  }
+
+  @if $num >= 0 and $num < $base {
+    @return $sign + str-slice($chars, ($num + 1), ($num + 1));
+  }
+
+  $q: $num;
+  @while $q != 0 {
+    $r: $q % $base;
+    $q: floor($q / $base);
+    $result: str-slice($chars, ($r + 1), ($r + 1)) + $result;
+  }
+
+  @return $sign + $result;
+}
+
+@function parseInt($str, $radix: 10) {
+  $chars: charsFromBase($radix);
+  $base: str-length($chars);
+  $result: 0;
+
+  $isNegative: str-index($str, '-') == 1;
+
+  @if $isNegative {
+    $str: str-slice($str, 2);
+  }
+
+  @for $i from 1 through str-length($str) {
+    $char: str-slice($str, -$i, -$i);
+    $value: str-index($chars, $char) - 1;
+    $result: $result + ($value * pow($base, ($i - 1)));
+  }
+
+  @return if($isNegative, -$result, $result);
+}
