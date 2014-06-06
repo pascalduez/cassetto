@@ -1,0 +1,20 @@
+
+@include describe("The rot13 function") {
+  $decoded: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  $encoded: 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  $chars: 'abc/def%ghi01';
+
+  @include it("should encode a string") {
+    @include should(expect(rot13($decoded)), to(be($encoded)));
+  }
+
+  @include it("should decode a string") {
+    @include should(expect(rot13($encoded)), to(be($decoded)));
+  }
+
+  @include it("should skip non-alphabetic chars") {
+    @include should(expect(str-index(rot13($chars), '/')), to(be(4)));
+    @include should(expect(str-index(rot13($chars), '%')), to(be(8)));
+    @include should(expect(str-index(rot13($chars), '0')), to(be(12)));
+  }
+}

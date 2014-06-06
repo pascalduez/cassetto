@@ -1,0 +1,24 @@
+
+// ROT13 implementation in Sass.
+
+@function rot13($str) {
+  $chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  $result: '';
+
+  @for $i from 1 through str-length($str) {
+    $char: str-slice($str, $i, $i);
+    $index: str-index($chars, $char);
+    $pos: 0;
+
+    @if $index {
+      // $index > 26 == Lower case
+      // $index <= 26 == Upper case
+      $start: if($index > 26, 27, 1);
+      $pos: (($index - $start) + 13) % 26 + $start;
+    }
+
+    $result: $result + if($index, str-slice($chars, $pos, $pos), $char);
+  }
+
+  @return $result;
+}
