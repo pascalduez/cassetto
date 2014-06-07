@@ -1,13 +1,21 @@
 
 // JavaScript `toString` and `parseInt` implementation in Sass.
 
-@function pow($val, $pow) {
-  $res: 1;
-  @while($pow > 0) {
-    $res: $res * $val;
-    $pow: $pow - 1;
+@function pow($num, $exp) {
+  $result: 1;
+
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $result: $result * $num;
+    }
   }
-  @return $res;
+  @else {
+    @for $i from $exp to 0 {
+      $result: $result / $num;
+    }
+  }
+
+  @return $result;
 }
 
 @function charsFromBase($base: 10) {
