@@ -18,6 +18,7 @@
   @return $result;
 }
 
+
 @function charsFromBase($base: 10) {
   $chars:(
     // Binary
@@ -31,15 +32,18 @@
     // Base 36
     36: '0123456789abcdefghijklmnopqrstuvwxyz',
     // Base 64
-    64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/'
+    64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/='
   );
 
-  @return if(map-has-key($chars, $base), map-get($chars, $base), null);
+  @if not map-has-key($chars, $base) {
+    @warn "There is no base `#{$base}` available.";
+  }
+  @return map-get($chars, $base);
 }
+
 
 @function toString($num, $radix: 10) {
   $chars: charsFromBase($radix);
-  $base: str-length($chars);
   $result: '';
   $sign: '';
 
@@ -48,36 +52,36 @@
     $num: abs($num);
   }
 
-  @if $num >= 0 and $num < $base {
+  @if $num >= 0 and $num < $radix {
     @return $sign + str-slice($chars, ($num + 1), ($num + 1));
   }
 
   $q: $num;
   @while $q != 0 {
-    $r: $q % $base;
-    $q: floor($q / $base);
+    $r: $q % $radix;
+    $q: floor($q / $radix);
     $result: str-slice($chars, ($r + 1), ($r + 1)) + $result;
   }
 
   @return $sign + $result;
 }
 
+
 @function parseInt($str, $radix: 10) {
   $chars: charsFromBase($radix);
-  $base: str-length($chars);
   $result: 0;
 
-  $isNegative: str-index($str, '-') == 1;
+  $is-negative: str-index($str, '-') == 1;
 
-  @if $isNegative {
+  @if $is-negative {
     $str: str-slice($str, 2);
   }
 
   @for $i from 1 through str-length($str) {
     $char: str-slice($str, -$i, -$i);
     $value: str-index($chars, $char) - 1;
-    $result: $result + ($value * pow($base, ($i - 1)));
+    $result: $result + ($value * pow($radix, ($i - 1)));
   }
 
-  @return if($isNegative, -$result, $result);
+  @return if($is-negative, -$result, $result);
 }
