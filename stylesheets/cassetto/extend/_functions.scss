@@ -1,0 +1,121 @@
+
+// Cassetto
+// Sass extensions: misc functions
+// -------------------------------
+
+
+// Remove unit from `$number`
+// --------
+// @param [number] $number
+// --------
+// @return [number]
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+// A Sass micro-templating function.
+// --------
+// @param [string] $format
+// @param [arglist | map] $args
+// --------
+// @return [string]
+
+@function template($format, $args...) {
+  $result: $format;
+
+  @each $key, $value in keywords($args) {
+    $token: "{{#{$key}}}";
+    $length: str-length($token);
+    $index: str-index($result, $token);
+
+    @if $index {
+      $result: if($index > 1, str-slice($result, 1, $index - 1), "")
+               + $value
+               + str-slice($result, ($index + $length));
+
+      @if str-index($result, $token) {
+        $result: template($result, $args...);
+      }
+    }
+  }
+
+  @return $result;
+}
+
+
+// Test whether `$value` is empty.
+// --------
+// @param $value
+// --------
+// @return [boolean]
+
+@function empty($value) {
+  @if not $value
+      or $value == ""
+      or $value == 0
+      or $value == ()
+      or length($value) == 0 {
+    @return true;
+  }
+  @return false;
+}
+
+
+// Test whether `$a` is strictly equal to `$b`.
+// --------
+// @param $a
+// @param $b
+// --------
+// @return [boolean]
+
+@function strict-eq($a, $b) {
+  @return $a == $b
+      and type-of($a) == type-of($b)
+      and unit($a) == unit($b);
+}
+
+
+// Test whether `$value` is containedd between `$min` and `$max`.
+// --------
+// @param [number] $min: minimum range value
+// @param [number] $max: maximum range value
+// @param [number] $value: the value to be tested
+// --------
+// @return [boolean]
+
+@function is-in-range($min, $max, $value) {
+  @return ($value >= $min) and ($value <= $max);
+}
+
+
+// Clamp `$value` between `$min` and `$max`.
+// --------
+// @param [number] $min: minimum range value
+// @param [number] $max: maximum range value
+// @param [number] $value: the value to be clamped
+// --------
+// @return [number]
+
+@function clamp($min, $max, $value) {
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+
+// Test whether `$value` looks like a file.
+// --------
+// @param [string] $value
+// @param [string] $extension
+// --------
+// @return [boolean]
+
+@function is-file($value, $extension: svg) {
+  $ext: '.#{$extension}';
+  $length: str-length($ext);
+
+  @return type-of($value) == string
+      and $value != ''
+      and not not str-index($value, $ext)
+      and str-slice($value, -$length) == $ext;
+}

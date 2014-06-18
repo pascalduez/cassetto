@@ -2,7 +2,13 @@
 @import "cassetto";
 
 @include runner-start;
+
 @import "../specs/functions";
-@import "../specs/positional_notation";
+@import "../specs/lists";
+@import "../specs/maps";
+@import "../specs/maths";
+@import "../specs/strings";
+@import "../specs/positional-notation";
 @import "../specs/rot";
+
 @include runner-end;

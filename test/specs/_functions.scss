@@ -1,40 +1,9 @@
 
-@include describe("The _map-set function") {
-  $input: (one: 1, two: 2);
-  $output: (one: 1, two: 2, three: 3);
 
-  @include it("should always return a map") {
-    @include should(expect(_map-set($input, three, 3)), to(have-type-of("map")));
-  }
-
-  @include it("should append the new entry") {
-    @include should(expect(_map-set($input, three, 3)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The _strip-unit function") {
+@include describe("The strip-unit function") {
   @include it("should always return a number") {
-    @include should(expect(_strip-unit(1px)), to(have-type-of("number")));
-    @include should(expect(_strip-unit(100%)), to(have-type-of("number")));
-  }
-}
-
-
-
-@include describe("The _join function") {
-  $list-1: (one, two, three);
-  $list-2: ("one", "two", "three");
-
-  @include it("should always return a string") {
-    @include should(expect(_join($list-1, ",")), to(have-type-of("string")));
-    @include should(expect(_join($list-2, "/")), to(have-type-of("string")));
-  }
-
-  @include it("should return a concatenated string") {
-    @include should(expect(_join($list-1, ", ")), to(be("one, two, three")));
-    @include should(expect(_join($list-2, "/")), to(be("one/two/three")));
+    @include should(expect(strip-unit(1px)), to(have-type-of("number")));
+    @include should(expect(strip-unit(100%)), to(have-type-of("number")));
   }
 }
 
@@ -50,119 +19,6 @@
 
   @include it("should return a capitalized string") {
     @include should(expect(template($input, $width: 10, $height: 10)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The capitalize function") {
-  $input: "berlin";
-  $output: "Berlin";
-
-  @include it("should always return a string") {
-    @include should(expect(capitalize($input)), to(have-type-of("string")));
-  }
-
-  @include it("should return a capitalized string") {
-    @include should(expect(capitalize($input)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The uncapitalize function") {
-  $input: "Berlin";
-  $output: "berlin";
-
-  @include it("should always return a string") {
-    @include should(expect(uncapitalize($input)), to(have-type-of("string")));
-  }
-
-  @include it("should return a uncapitalized string") {
-    @include should(expect(uncapitalize($input)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The str-ucwords function") {
-  $input: "such string, very sassy. wow.";
-  $output: "Such String, Very Sassy. Wow.";
-
-  @include it("should always return a string") {
-    @include should(expect(str-ucwords($input)), to(have-type-of("string")));
-  }
-
-  @include it("should return an uncapitalized string") {
-    @include should(expect(str-ucwords($input)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The contain function") {
-  $list: one, two, three;
-
-  @include it("should return a boolean") {
-    @include should(expect(contain($list, one)), to(be-truthy()));
-    @include should(expect(contain($list, four)), to(be-falsy()));
-  }
-}
-
-
-
-@include describe("The camelize function") {
-  $input: "a constructor-function name.";
-  $output: "aConstructorFunctionName";
-
-  @include it("should always return a string") {
-    @include should(expect(camelize($input)), to(have-type-of("string")));
-  }
-
-  @include it("should return an camelized string") {
-    @include should(expect(camelize($input)), to(be($output)));
-  }
-}
-
-
-
-@include describe("The _map-keys function") {
-  $input: (one: 1px, two: 2px);
-  $output: (one two);
-
-  $test: _map-keys($input);
-
-  @include it("should always return a list") {
-    @include should(expect($test), to(have-type-of("list")));
-  }
-
-  @include it("should return a list of keys") {
-    @include should(expect($test), to(be($output)));
-  }
-
-  @include it("should return a list with specified separator") {
-    @include should(expect(list-separator($test)), to(be(space)));
-  }
-}
-
-
-
-@include describe("The _map-values function") {
-  $input: (one: 1px, two: 2px);
-  $output: (1px 2px);
-
-  $test: _map-values($input);
-
-  @include it("should always return a list") {
-    @include should(expect($test), to(have-type-of("list")));
-  }
-
-  @include it("should return a list of values") {
-    @include should(expect($test), to(be($output)));
-  }
-
-  @include it("should return a list with specified separator") {
-    @include should(expect(list-separator($test)), to(be(space)));
   }
 }
 
@@ -201,62 +57,6 @@
   @include it("should test for strictly equal values") {
     @include should(expect($true), to(be-truthy()));
     @include should(expect($false), to(be-falsy()));
-  }
-}
-
-
-
-@include describe("The map-fetch function") {
-  $map: (
-    one: (
-      two: (
-        three: "yeah!"
-      )
-    )
-  );
-  $test: map-fetch($map, one two three);
-
-  @include it("should return a deep nested value") {
-    @include should(expect($test), to(be("yeah!")));
-  }
-}
-
-
-
-@include describe("The map-deep-merge function") {
-  $map: (
-    one: (
-      val: 1,
-      two: (
-        val: 2,
-        three: (
-          val: 3,
-          four: (
-            val: 4
-          )
-        )
-      )
-    ),
-    foo: "foo",
-    bar: "bar"
-  );
-   // It should append a new value
-  $append: map-deep-merge($map, one two three four, (test: "flag!"));
-  $append-val: map-fetch($append, one two three four test);
-  // It should update a defined value
-  $update: map-deep-merge($map, one two three four, (val: "flag!"));
-  $update-val: map-fetch($update, one two three four val);
-
-  @include it("should always return a map") {
-    @include should(expect($append), to(have-type-of("map")));
-  }
-
-  @include it("should append a new value") {
-    @include should(expect($append-val), to(be("flag!")));
-  }
-
-  @include it("should update a defined value") {
-    @include should(expect($update-val), to(be("flag!")));
   }
 }
 

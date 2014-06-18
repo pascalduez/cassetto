@@ -1,0 +1,74 @@
+
+
+@include describe("The capitalize function") {
+  $input: "berlin";
+  $output: "Berlin";
+
+  @include it("should always return a string") {
+    @include should(expect(capitalize($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return a capitalized string") {
+    @include should(expect(capitalize($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The uncapitalize function") {
+  $input: "Berlin";
+  $output: "berlin";
+
+  @include it("should always return a string") {
+    @include should(expect(uncapitalize($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return a uncapitalized string") {
+    @include should(expect(uncapitalize($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The str-ucwords function") {
+  $input: "such string, very sassy. wow.";
+  $output: "Such String, Very Sassy. Wow.";
+
+  @include it("should always return a string") {
+    @include should(expect(str-ucwords($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return an uncapitalized string") {
+    @include should(expect(str-ucwords($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The camelize function") {
+  $input: "a constructor-function name.";
+  $output: "aConstructorFunctionName";
+
+  @include it("should always return a string") {
+    @include should(expect(camelize($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return an camelized string") {
+    @include should(expect(camelize($input)), to(be($output)));
+  }
+}
+
+
+
+@include describe("The str-reverse function") {
+  $input: "Hallo Berlin !";
+  $output: "! nilreB ollaH";
+
+  @include it("should always return a string") {
+    @include should(expect(str-reverse($input)), to(have-type-of("string")));
+  }
+
+  @include it("should return a reversed string") {
+    @include should(expect(str-reverse($input)), to(be($output)));
+  }
+}

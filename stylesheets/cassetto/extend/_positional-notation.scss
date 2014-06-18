@@ -1,25 +1,11 @@
 
-// JavaScript `toString` and `parseInt` implementation in Sass.
+// Cassetto
+// JavaScript `toString` and `parseInt` implementation in Sass
+// -----------------------------------------------------------
 
-@function pow($num, $exp) {
-  $result: 1;
+// require 'pow' from 'maths'
 
-  @if $exp > 0 {
-    @for $i from 1 through $exp {
-      $result: $result * $num;
-    }
-  }
-  @else {
-    @for $i from $exp to 0 {
-      $result: $result / $num;
-    }
-  }
-
-  @return $result;
-}
-
-
-@function charsFromBase($base: 10) {
+@function chars-from-base($base: 10) {
   $chars:(
     // Binary
     2: '01',
@@ -32,7 +18,7 @@
     // Base 36
     36: '0123456789abcdefghijklmnopqrstuvwxyz',
     // Base 64
-    64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/='
+    64: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
   );
 
   @if not map-has-key($chars, $base) {
@@ -42,8 +28,8 @@
 }
 
 
-@function toString($num, $radix: 10) {
-  $chars: charsFromBase($radix);
+@function to-string($num, $radix: 10) {
+  $chars: chars-from-base($radix);
   $result: '';
   $sign: '';
 
@@ -67,8 +53,8 @@
 }
 
 
-@function parseInt($str, $radix: 10) {
-  $chars: charsFromBase($radix);
+@function parse-int($str, $radix: 10) {
+  $chars: chars-from-base($radix);
   $result: 0;
 
   $is-negative: str-index($str, '-') == 1;

@@ -20,8 +20,8 @@
 
   @include it("should encode or decode binary properly") {
     @each $str, $num in $fixture {
-      @include should(expect(parseInt($str, 2)), to(be($num)));
-      @include should(expect(toString($num, 2)), to(be($str)));
+      @include should(expect(parse-int($str, 2)), to(be($num)));
+      @include should(expect(to-string($num, 2)), to(be($str)));
     }
   }
 }
@@ -49,8 +49,8 @@
 
   @include it("should encode or decode hexadecimal properly") {
     @each $str, $num in $fixture {
-      @include should(expect(parseInt($str, 16)), to(be($num)));
-      @include should(expect(toString($num, 16)), to(be($str)));
+      @include should(expect(parse-int($str, 16)), to(be($num)));
+      @include should(expect(to-string($num, 16)), to(be($str)));
     }
   }
 }
@@ -78,8 +78,8 @@
 
   @include it("should encode or decode base36 properly") {
     @each $str, $num in $fixture {
-      @include should(expect(parseInt($str, 36)), to(be($num)));
-      @include should(expect(toString($num, 36)), to(be($str)));
+      @include should(expect(parse-int($str, 36)), to(be($num)));
+      @include should(expect(to-string($num, 36)), to(be($str)));
     }
   }
 }

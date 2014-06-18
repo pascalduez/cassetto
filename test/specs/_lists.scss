@@ -1,0 +1,27 @@
+
+
+@include describe("The _join function") {
+  $list-1: (one, two, three);
+  $list-2: ("one", "two", "three");
+
+  @include it("should always return a string") {
+    @include should(expect(_join($list-1, ",")), to(have-type-of("string")));
+    @include should(expect(_join($list-2, "/")), to(have-type-of("string")));
+  }
+
+  @include it("should return a concatenated string") {
+    @include should(expect(_join($list-1, ", ")), to(be("one, two, three")));
+    @include should(expect(_join($list-2, "/")), to(be("one/two/three")));
+  }
+}
+
+
+
+@include describe("The contain function") {
+  $list: one, two, three;
+
+  @include it("should return a boolean") {
+    @include should(expect(contain($list, one)), to(be-truthy()));
+    @include should(expect(contain($list, four)), to(be-falsy()));
+  }
+}

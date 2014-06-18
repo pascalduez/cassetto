@@ -20,6 +20,14 @@
 @import "cassetto/accelerate";
 @import "cassetto/generated";
 @import "cassetto/log";
-@import "cassetto/functions/functions";
-@import "cassetto/functions/positional_notation";
-@import "cassetto/functions/rot";
+
+//
+// Import extend
+//
+@import "cassetto/extend/functions";
+@import "cassetto/extend/lists";
+@import "cassetto/extend/maps";
+@import "cassetto/extend/maths";
+@import "cassetto/extend/strings";
+@import "cassetto/extend/positional-notation";
+@import "cassetto/extend/rot";
