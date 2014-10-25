@@ -7,6 +7,8 @@
   // Trigger hardware acceleration.
   // Mostly usefull for webkit, iOs
   //
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=1007019#c123
+  //
   @include experimental(transform, translate3d(0, 0, 0));
   @include experimental(transform, preserve-3d);
   @include experimental(backface-visibility, hidden);

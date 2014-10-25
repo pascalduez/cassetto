@@ -1,0 +1,25 @@
+
+//
+// Cassetto vertical center.
+//
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin vertical-center($child) {
+  display: table;
+
+  #{$child} {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
