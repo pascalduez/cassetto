@@ -1,18 +1,17 @@
 
 //
-// Cassetto vertical center.
+// Cassetto center.
 //
+
+@mixin vertical-center {
+  display: flex;
+  align-items: center;
+}
 
 @mixin vertical-center {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
-
-@mixin vertical-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @mixin vertical-center($child) {
@@ -21,5 +20,19 @@
   #{$child} {
     display: table-cell;
     vertical-align: middle;
+  }
+}
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin center($child) {
+  display: flex;
+
+  #{$child} {
+    margin: auto;
   }
 }
