@@ -1,0 +1,34 @@
+
+// @see https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+@mixin aspect-ratio($ratio: 1 1, $child: '> :first-child') {
+  position: relative;
+
+  &::before {
+    width: 100%;
+    display: block;
+    content: '';
+    padding-top: percentage(nth($ratio, 2) / nth($ratio, 1));
+  }
+
+  #{$child} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// @see https://gist.github.com/jonathantneal/a9b8901273475d261dd3
+@mixin fluid-aspect($ratio: 1 1, $child: '> :first-child') {
+  position: relative;
+	padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+
+	#{$child} {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+		left: 0;
+		top: 0;
+	}
+}
