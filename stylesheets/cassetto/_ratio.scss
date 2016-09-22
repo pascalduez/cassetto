@@ -22,13 +22,13 @@
 // @see https://gist.github.com/jonathantneal/a9b8901273475d261dd3
 @mixin fluid-aspect($ratio: 1 1, $child: '> :first-child') {
   position: relative;
-	padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+  padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
 
-	#{$child} {
+  #{$child} {
     width: 100%;
     height: 100%;
     position: absolute;
-		left: 0;
-		top: 0;
-	}
+    left: 0;
+    top: 0;
+  }
 }
