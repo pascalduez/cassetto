@@ -13,7 +13,7 @@ Instead check some functionalities extracted into their own project:
 
 ## Authors
 
-[Pascal Duez](http://pascalduez.me)
+[Pascal Duez](https://github.com/pascalduez)
 
 
 
