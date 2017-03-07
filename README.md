@@ -1,6 +1,6 @@
 ## Cassetto
 
-Sass [ mixins, extendables, helpers, snippets, ... ]  
+Sass and CSS [ mixins, extendables, helpers, snippets, ... ]  
 Gathered in one (`messy`) drawer for testing and backup purpose.  
 
 **Not for release**
