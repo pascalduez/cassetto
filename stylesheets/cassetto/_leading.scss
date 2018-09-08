@@ -25,7 +25,7 @@ $fontsize-base: 10 !default;
 
 @function set-margin( $font-size, $line-height, $margin ) {
   //
-  // Helper mixin set maring around text blocks.
+  // Helper mixin set marigins around text blocks.
   //
   $computed-font-size: $font-size * $fontsize-base;
   $computed-line-height: $computed-font-size * $line-height;
@@ -36,3 +36,7 @@ $fontsize-base: 10 !default;
 }
 
 
+// Related
+// http://text-crop.eightshapes.com
+// https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+// https://medium.com/codyhouse/line-height-crop-a-simple-css-formula-to-remove-top-space-from-your-text-9c3de06d7c6f
